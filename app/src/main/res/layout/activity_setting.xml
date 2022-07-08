@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    android:paddingTop="?attr/actionBarSize"
+    android:background="@color/primary_color"
+    >
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/tertiary_color"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/idCVProfilePic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="70dp"
+                android:layout_centerHorizontal="true"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="20dp"
+                >
+
+                <ImageView
+                    android:id="@+id/idIVProfilePic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--top background-->
+            <View
+                android:id="@+id/idVContactTop"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@color/secondary_color" />
+
+            <!--text view for displaying user name-->
+            <EditText
+                android:id="@+id/idTVName"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/idCVProfilePic"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/albertsansbold"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="이혜림"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="21sp" />
+
+            <RelativeLayout
+                android:id="@+id/idRLPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/idTVName"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/idIVPhoneIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_phone_24"
+                    app:tint="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/idTVPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_toRightOf="@id/idIVPhoneIcon"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:text="Phone" />
+
+                <EditText
+                    android:id="@+id/idETPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:ems="9"
+                    android:inputType="textPersonName"
+                    android:text="Sample EditText"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/albertsanslight"
+                    android:textSize="15sp"
+                    android:background="@color/primary_color"
+                    android:selectAllOnFocus="true"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/idRLEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/idRLPhone"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                >
+
+                <ImageView
+                    android:id="@+id/idIVEmailIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_phone_24"
+                    app:tint="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/idTVEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_toRightOf="@id/idIVEmailIcon"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:text="Email" />
+
+                <EditText
+                    android:id="@+id/idETEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:ems="9"
+                    android:inputType="textEmailAddress"
+                    android:text="Sample EditText"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/albertsanslight"
+                    android:textSize="15sp"
+                    android:background="@color/primary_color"
+                    android:selectAllOnFocus="true"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
