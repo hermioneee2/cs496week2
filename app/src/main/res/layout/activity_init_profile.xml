@@ -100,27 +100,28 @@
                     app:tint="@color/white"
                     />
 
-                <TextView
-                    android:id="@+id/ivPhone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="7dp"
-                    android:layout_toRightOf="@id/ivPhoneIcon"
-                    android:fontFamily="@font/albertsansmedium"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:text="Phone" />
+<!--                <TextView-->
+<!--                    android:id="@+id/ivPhone"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginStart="7dp"-->
+<!--                    android:layout_toRightOf="@id/ivPhoneIcon"-->
+<!--                    android:fontFamily="@font/albertsansmedium"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:text="Phone" />-->
 
                 <EditText
                     android:id="@+id/etPhone"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
+                    android:layout_marginLeft="30dp"
                     android:ems="9"
-                    android:inputType="textPersonName"
-                    android:text="Sample EditText"
+                    android:inputType="phone"
+                    android:hint="010-1234-5678"
                     android:textColor="@color/white"
                     android:fontFamily="@font/albertsanslight"
                     android:textSize="15sp"
@@ -144,31 +145,69 @@
                     android:id="@+id/ivEmailIcon"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_baseline_phone_24"
+                    android:src="@drawable/ic_baseline_email_24"
                     app:tint="@color/white"
                     />
 
-                <TextView
-                    android:id="@+id/tvEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="7dp"
-                    android:layout_toRightOf="@id/ivEmailIcon"
-                    android:fontFamily="@font/albertsansmedium"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:text="Email" />
+<!--                <TextView-->
+<!--                    android:id="@+id/tvEmail"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginStart="7dp"-->
+<!--                    android:layout_toRightOf="@id/ivEmailIcon"-->
+<!--                    android:fontFamily="@font/albertsansmedium"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:text="Email" />-->
 
                 <EditText
                     android:id="@+id/etEmail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
+                    android:layout_marginLeft="30dp"
                     android:ems="9"
                     android:inputType="textEmailAddress"
-                    android:text="Sample EditText"
+                    android:hint="youremail@email.com"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/albertsanslight"
+                    android:textSize="15sp"
+                    android:background="@color/primary_color"
+                    android:selectAllOnFocus="true"
+                    />
+            </RelativeLayout>
+
+            <!--work tags-->
+            <RelativeLayout
+                android:id="@+id/rlWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlEmail"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivWorkIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_business_center_24"
+                    app:tint="@color/white"
+                    />
+
+                <EditText
+                    android:id="@+id/etWork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="30dp"
+                    android:ems="9"
+                    android:inputType="textEmailAddress"
+                    android:hint="youremail@email.com"
                     android:textColor="@color/white"
                     android:fontFamily="@font/albertsanslight"
                     android:textSize="15sp"
