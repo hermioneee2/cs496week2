@@ -6,10 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container"
-    android:paddingTop="?attr/actionBarSize"
     android:background="@color/primary_color"
     >
 
+<!--    <RelativeLayout-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        xmlns:tools="http://schemas.android.com/tools"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/container"-->
+<!--        android:paddingTop="?attr/actionBarSize"-->
+<!--        android:background="@color/primary_color"-->
+<!--        >-->
 
 
     <androidx.cardview.widget.CardView
@@ -29,6 +38,7 @@
             android:background="@color/tertiary_color"
             >
 
+            <!--profile pic-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvProfilePic"
                 android:layout_width="100dp"
@@ -63,15 +73,15 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cvProfilePic"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/albertsansbold"
+                android:fontFamily="@font/albertsans"
                 android:layout_marginTop="8dp"
                 android:padding="8dp"
-                android:text="이혜림"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="21sp"
                 android:background="@color/tertiary_color" />
 
+            <!--phone-->
             <RelativeLayout
                 android:id="@+id/rlPhone"
                 android:layout_width="match_parent"
@@ -119,6 +129,7 @@
                     />
             </RelativeLayout>
 
+            <!--email-->
             <RelativeLayout
                 android:id="@+id/rlEmail"
                 android:layout_width="match_parent"
@@ -166,6 +177,7 @@
                     />
             </RelativeLayout>
 
+            <!--submit-->
             <Button
                 android:id="@+id/btnSetMyProfile"
                 android:text="Set My Profile"
