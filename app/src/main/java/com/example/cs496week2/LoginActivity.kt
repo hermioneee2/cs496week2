@@ -16,28 +16,30 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // If already logged in once
-        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
-            if (error != null) {
-                Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
-            }
-            else if (tokenInfo != null) {
-                Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
-                Log.d("token", "FIRST")
-                UserApiClient.instance.me { user, error ->
-                    if (error != null) {
-                        Log.e("callUserInfo2", "사용자 정보 요청 실패2", error)
-                    }
-                    else if (user != null) {
-                        Log.i("callUserInfo2", "사용자 정보 요청 성공2" +
-                                "\n회원번호: ${user.id}")
-                    }
-                }
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                finish()
-            }
-        }
+//        // If already logged in once
+//        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
+//            if (error != null) {
+//                Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
+//            }
+//            else if (tokenInfo != null) {
+//                Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
+//                Log.d("token", "FIRST")
+//                UserApiClient.instance.me { user, error ->
+//                    if (error != null) {
+//                        Log.e("callUserInfo2", "사용자 정보 요청 실패2", error)
+//                    }
+//                    else if (user != null) {
+//                        Log.i("callUserInfo2", "사용자 정보 요청 성공2" +
+//                                "\n회원번호: ${user.id}" +
+//                                "\n이메일: ${user.kakaoAccount?.email}" +
+//                                "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+//                                "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")                    }
+//                }
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+//                finish()
+//            }
+//        }
 
         //Callback for error cases
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
@@ -92,7 +94,10 @@ class LoginActivity : AppCompatActivity() {
                     }
                     else if (user != null) {
                         Log.i("callUserInfo", "사용자 정보 요청 성공" +
-                                "\n회원번호: ${user.id}")
+                                "\n회원번호: ${user.id}" +
+                                "\n이메일: ${user.kakaoAccount?.email}" +
+                                "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
                     }
                 }
             }else{
