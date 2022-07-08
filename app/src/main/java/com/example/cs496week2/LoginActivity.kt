@@ -15,18 +15,31 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        // 로그인 정보 확인
+
+        // If already logged in once
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
                 Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
             }
             else if (tokenInfo != null) {
                 Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
+                Log.d("token", "FIRST")
+                UserApiClient.instance.me { user, error ->
+                    if (error != null) {
+                        Log.e("callUserInfo2", "사용자 정보 요청 실패2", error)
+                    }
+                    else if (user != null) {
+                        Log.i("callUserInfo2", "사용자 정보 요청 성공2" +
+                                "\n회원번호: ${user.id}")
+                    }
+                }
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
             }
         }
+
+        //Callback for error cases
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 when {
@@ -61,15 +74,27 @@ class LoginActivity : AppCompatActivity() {
             }
             else if (token != null) {
                 Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+//                Log.i("loginSuccessfully", "로그인 성공(토큰) : " + token.accessToken);
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
             }
         }
+
+        // Initial login
         val kakao_login_button = findViewById<ImageButton>(R.id.kakao_login_button) // 로그인 버튼
         kakao_login_button.setOnClickListener {
             if(UserApiClient.instance.isKakaoTalkLoginAvailable(this)){
                 UserApiClient.instance.loginWithKakaoTalk(this, callback = callback)
+                UserApiClient.instance.me { user, error ->
+                    if (error != null) {
+                        Log.e("callUserInfo", "사용자 정보 요청 실패", error)
+                    }
+                    else if (user != null) {
+                        Log.i("callUserInfo", "사용자 정보 요청 성공" +
+                                "\n회원번호: ${user.id}")
+                    }
+                }
             }else{
                 UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
