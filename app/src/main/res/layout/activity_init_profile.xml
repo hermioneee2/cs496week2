@@ -30,7 +30,7 @@
             >
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/idCVProfilePic"
+                android:id="@+id/cvProfilePic"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="20dp"
@@ -41,7 +41,7 @@
                 >
 
                 <ImageView
-                    android:id="@+id/idIVProfilePic"
+                    android:id="@+id/ivProfilePic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -51,17 +51,17 @@
 
             <!--top background-->
             <View
-                android:id="@+id/idVContactTop"
+                android:id="@+id/vContactTop"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:background="@color/secondary_color" />
 
             <!--text view for displaying user name-->
             <EditText
-                android:id="@+id/idTVName"
+                android:id="@+id/etName"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/idCVProfilePic"
+                android:layout_below="@id/cvProfilePic"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/albertsansbold"
                 android:layout_marginTop="8dp"
@@ -69,20 +69,21 @@
                 android:text="이혜림"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="21sp" />
+                android:textSize="21sp"
+                android:background="@color/tertiary_color" />
 
             <RelativeLayout
-                android:id="@+id/idRLPhone"
+                android:id="@+id/rlPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/idTVName"
+                android:layout_below="@id/etName"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 >
 
                 <ImageView
-                    android:id="@+id/idIVPhoneIcon"
+                    android:id="@+id/ivPhoneIcon"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_baseline_phone_24"
@@ -90,19 +91,19 @@
                     />
 
                 <TextView
-                    android:id="@+id/idTVPhone"
+                    android:id="@+id/ivPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="7dp"
-                    android:layout_toRightOf="@id/idIVPhoneIcon"
+                    android:layout_toRightOf="@id/ivPhoneIcon"
                     android:fontFamily="@font/albertsansmedium"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:text="Phone" />
 
                 <EditText
-                    android:id="@+id/idETPhone"
+                    android:id="@+id/etPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -119,17 +120,17 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/idRLEmail"
+                android:id="@+id/rlEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/idRLPhone"
+                android:layout_below="@id/rlPhone"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="15dp"
                 >
 
                 <ImageView
-                    android:id="@+id/idIVEmailIcon"
+                    android:id="@+id/ivEmailIcon"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_baseline_phone_24"
@@ -137,19 +138,19 @@
                     />
 
                 <TextView
-                    android:id="@+id/idTVEmail"
+                    android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="7dp"
-                    android:layout_toRightOf="@id/idIVEmailIcon"
+                    android:layout_toRightOf="@id/ivEmailIcon"
                     android:fontFamily="@font/albertsansmedium"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:text="Email" />
 
                 <EditText
-                    android:id="@+id/idETEmail"
+                    android:id="@+id/etEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -164,6 +165,21 @@
                     android:selectAllOnFocus="true"
                     />
             </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnSetMyProfile"
+                android:text="Set My Profile"
+                android:textColor="@color/primary_color"
+                android:fontFamily="@font/albertsansmedium"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/teal_200"
+                />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
