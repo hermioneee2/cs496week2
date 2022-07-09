@@ -198,58 +198,78 @@
                     app:tint="@color/white"
                     />
 
-<!--                <EditText-->
-<!--                    android:id="@+id/etWork"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_marginLeft="30dp"-->
-<!--                    android:ems="9"-->
-<!--                    android:inputType="textEmailAddress"-->
-<!--                    android:hint="youremail@email.com"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:fontFamily="@font/albertsanslight"-->
-<!--                    android:textSize="15sp"-->
-<!--                    android:background="@color/primary_color"-->
-<!--                    android:selectAllOnFocus="true"-->
-<!--                    />-->
+                <AutoCompleteTextView
+                    android:id="@+id/actvWork"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="100dp"
+                    android:gravity="center_vertical"
+                    android:textColorHint="@color/white_disable"
+                    android:textColor="@color/white"
+                    android:hint="나의 직장 추가"
+                    android:background="@color/primary_color"
+                    android:completionThreshold="1"
+                    app:theme="@style/AppSearchView" />
 
-<!--                <SearchView-->
-<!--                    android:id="@+id/svWork"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="20dp"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_marginLeft="30dp"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:fontFamily="@font/albertsanslight"-->
-<!--                    android:textSize="15sp"-->
-<!--                    android:background="@color/primary_color"-->
-<!--                    android:iconifiedByDefault="false"-->
-<!--                    android:queryHint="직장 입력"-->
-<!--                    app:theme="@style/AppSearchView" />-->
+                <Button
+                    android:id="@+id/btnWork"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:textAllCaps="false"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginTop="-2dp"
+                    app:backgroundTint="@color/secondary_color"
+                    android:background="@drawable/ic_baseline_add_circle_24"
+                    />
+            </RelativeLayout>
 
-<!--                &lt;!&ndash;List View from which data is to be searched-->
-<!--                     for different programming languages&ndash;&gt;-->
-<!--                <ListView-->
-<!--                    android:id="@+id/lvWorkOption"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="fill_parent"-->
-<!--                    android:layout_below="@id/svWork"-->
-<!--                    android:layout_marginLeft="30dp"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    />-->
+            <RelativeLayout
+                android:id="@+id/rlWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlEmail"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivWorkIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_business_center_24"
+                    app:tint="@color/white"
+                    />
 
                 <AutoCompleteTextView
                     android:id="@+id/actvWork"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="20dp"
                     android:layout_marginLeft="30dp"
+                    android:layout_marginRight="100dp"
                     android:gravity="center_vertical"
-                    android:textColorHint="#555555"
-                    android:completionHint="검색어를 입력하세요."
-                    android:completionThreshold="1" />
+                    android:textColorHint="@color/white_disable"
+                    android:textColor="@color/white"
+                    android:hint="나의 직장 추가"
+                    android:background="@color/primary_color"
+                    android:completionThreshold="1"
+                    app:theme="@style/AppSearchView" />
 
+                <Button
+                    android:id="@+id/btnWork"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:textAllCaps="false"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginTop="-2dp"
+                    app:backgroundTint="@color/secondary_color"
+                    android:background="@drawable/ic_baseline_add_circle_24"
+                    />
             </RelativeLayout>
 
 
