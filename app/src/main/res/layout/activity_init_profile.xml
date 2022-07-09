@@ -198,23 +198,51 @@
                     app:tint="@color/white"
                     />
 
-                <EditText
-                    android:id="@+id/etWork"
+<!--                <EditText-->
+<!--                    android:id="@+id/etWork"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginLeft="30dp"-->
+<!--                    android:ems="9"-->
+<!--                    android:inputType="textEmailAddress"-->
+<!--                    android:hint="youremail@email.com"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:fontFamily="@font/albertsanslight"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@color/primary_color"-->
+<!--                    android:selectAllOnFocus="true"-->
+<!--                    />-->
+
+                <SearchView
+                    android:id="@+id/svWork"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_height="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="30dp"
-                    android:ems="9"
-                    android:inputType="textEmailAddress"
-                    android:hint="youremail@email.com"
                     android:textColor="@color/white"
                     android:fontFamily="@font/albertsanslight"
                     android:textSize="15sp"
                     android:background="@color/primary_color"
-                    android:selectAllOnFocus="true"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="직장 입력"
+                    app:theme="@style/AppSearchView" />
+
+                <!--List View from which data is to be searched
+                     for different programming languages-->
+                <ListView
+                    android:id="@+id/lvWorkOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_below="@id/svWork"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="@color/white"
                     />
+
             </RelativeLayout>
+
+
 
             <!--submit-->
             <Button
