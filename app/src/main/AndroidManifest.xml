@@ -43,7 +43,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".InitProfileActivity" />
-<!--        <activity android:name=".SearchableActivity" >-->
+<!--        <activity android:name=".InitProfileActivity" >-->
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.SEARCH" />-->
 <!--            </intent-filter>-->

@@ -1,11 +1,8 @@
 package com.example.cs496week2
 
-import android.app.SearchManager
-import android.content.Intent
+import android.R
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -14,10 +11,8 @@ import com.example.cs496week2.databinding.ActivityInitProfileBinding
 
 class InitProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInitProfileBinding
-    // creating array adapter for listview
-    lateinit var listAdapter: ArrayAdapter<String>
-    // creating array list for listview
-    lateinit var programmingLanguagesList: ArrayList<String>;
+//    private val list: MutableList<String>? = null
+    private val list: MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,60 +49,16 @@ class InitProfileActivity : AppCompatActivity() {
             Toast.makeText(this, "전달된 포토소스가 없습니다", Toast.LENGTH_SHORT).show()
         }
 
-        // Verify the action and get the query
-        // on below line we are
+        // 리스트에 검색될 데이터(단어)를 추가한다.
+        settingList();
 
-
-        // initializing list and adding data to list
-        programmingLanguagesList = ArrayList()
-        programmingLanguagesList.add("C")
-        programmingLanguagesList.add("C#")
-        programmingLanguagesList.add("Java")
-        programmingLanguagesList.add("Javascript")
-        programmingLanguagesList.add("Python")
-        programmingLanguagesList.add("Dart")
-        programmingLanguagesList.add("Kotlin")
-        programmingLanguagesList.add("Typescript")
-
-        // initializing list adapter and setting layout
-        // for each list view item and adding array list to it.
-        listAdapter = ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_list_item_1,
-            programmingLanguagesList
+        binding.actvWork.setAdapter(
+            ArrayAdapter(
+                this,
+                R.layout.simple_dropdown_item_1line, list as ArrayList<String>
+            )
         )
 
-        // on below line setting list
-        // adapter to our list view.
-        binding.lvWorkOption.adapter = listAdapter
-
-        // on below line we are adding on query
-        // listener for our search view.
-        binding.svWork.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                // on below line we are checking
-                // if query exist or not.
-                if (programmingLanguagesList.contains(query)) {
-                    // if query exist within list we
-                    // are filtering our list adapter.
-                    listAdapter.filter.filter(query)
-                } else {
-                    // if query is not present we are displaying
-                    // a toast message as no  data found..
-                    Toast.makeText(this@InitProfileActivity, "No Language found..", Toast.LENGTH_LONG)
-                        .show()
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // if query text is change in that case we
-                // are filtering our adapter with
-                // new text on below line.
-                listAdapter.filter.filter(newText)
-                return false
-            }
-        })
 
         // set on-click listener after entering all data
         binding.btnSetMyProfile.setOnClickListener {
@@ -117,6 +68,46 @@ class InitProfileActivity : AppCompatActivity() {
             Toast.makeText(this@InitProfileActivity, name, Toast.LENGTH_LONG).show()
             // send data
         }
+    }
+    private fun settingList() {
+        list.add("채수빈")
+        list.add("박지현")
+        list.add("수지")
+        list.add("남태현")
+        list.add("하성운")
+        list.add("크리스탈")
+        list.add("강승윤")
+        list.add("손나은")
+        list.add("남주혁")
+        list.add("루이")
+        list.add("진영")
+        list.add("슬기")
+        list.add("이해인")
+        list.add("고원희")
+        list.add("설리")
+        list.add("공명")
+        list.add("김예림")
+        list.add("혜리")
+        list.add("웬디")
+        list.add("박혜수")
+        list.add("카이")
+        list.add("진세연")
+        list.add("동호")
+        list.add("박세완")
+        list.add("도희")
+        list.add("창모")
+        list.add("허영지")
+        list.add("박a")
+        list.add("박b")
+        list.add("박c")
+        list.add("박d")
+        list.add("박e")
+        list.add("박aa")
+        list.add("박bb")
+        list.add("박cv")
+        list.add("박dr")
+        list.add("박e")
+
     }
 
 
