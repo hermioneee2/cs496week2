@@ -247,7 +247,8 @@
                     android:text="삼성"
                     android:background="@drawable/rounded_corner"
                     android:completionThreshold="1"
-                    app:theme="@style/AppSearchView" />
+                    app:theme="@style/AppSearchView"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvWorkTag2"
@@ -261,7 +262,8 @@
                     android:text="삼성"
                     android:background="@drawable/rounded_corner"
                     android:completionThreshold="1"
-                    app:theme="@style/AppSearchView" />
+                    app:theme="@style/AppSearchView"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvWorkTag3"
@@ -275,7 +277,9 @@
                     android:completionThreshold="1"
                     android:text="삼성"
                     android:background="@drawable/rounded_corner"
-                    app:theme="@style/AppSearchView" />
+                    app:theme="@style/AppSearchView"
+                    android:visibility="gone"/>
+
             </RelativeLayout>
 
 

@@ -2,9 +2,12 @@ package com.example.cs496week2
 
 import android.R
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.example.cs496week2.databinding.ActivityInitProfileBinding
 
@@ -13,6 +16,7 @@ class InitProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInitProfileBinding
 //    private val list: MutableList<String>? = null
     private val list: MutableList<String> = mutableListOf()
+    private var workCnt: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +62,26 @@ class InitProfileActivity : AppCompatActivity() {
                 R.layout.simple_dropdown_item_1line, list as ArrayList<String>
             )
         )
+
+        // set on-click listener for adding tags //WORK
+        binding.btnWork.setOnClickListener {
+            val newWork = binding.actvWork.text;
+            workCnt++
+
+            if (workCnt<=3){
+                val tagName = "tvWorkTag$workCnt"
+                val tagId: Int =
+                    resources.getIdentifier(tagName, "id", packageName)
+                val tag = findViewById<TextView>(tagId)
+
+                tag.text = newWork
+                tag.visibility = View.VISIBLE
+            } else {
+                Toast.makeText(this@InitProfileActivity, "Maximum 3 tags can be added.", Toast.LENGTH_SHORT).show()
+            }
+
+            binding.actvWork.setText("")
+        }
 
 
         // set on-click listener after entering all data
@@ -107,7 +131,6 @@ class InitProfileActivity : AppCompatActivity() {
         list.add("박cv")
         list.add("박dr")
         list.add("박e")
-
     }
 
 
