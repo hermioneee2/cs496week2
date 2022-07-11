@@ -108,5 +108,6 @@ class InitProfileActivity : AppCompatActivity() {
                 Log.d("ayush: ", result.body().toString())
             }
         }
+        list.addAll(listOf("삼성전자", "LG전자", "네이버", "카카오", "크래프톤"))
     }
 }
