@@ -6,10 +6,18 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
+import com.example.cs496week2.interfaces.GetUserAPI
+import com.example.cs496week2.objects.MyProfile
+import com.example.cs496week2.objects.RetrofitHelper
 //import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause.*
 import com.kakao.sdk.user.UserApiClient
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 class LoginActivity : AppCompatActivity() {
     lateinit var userID: String
     lateinit var name: String
@@ -47,22 +55,16 @@ class LoginActivity : AppCompatActivity() {
                         Log.e("callUserInfo2", "사용자 정보 요청 실패2", error)
                     }
                     else if (user != null) {
-                        userID = user.id.toString();
-                        name = user.kakaoAccount?.profile?.nickname.toString();
-                        email = user.kakaoAccount?.email.toString();
-                        photoSrc = user.kakaoAccount?.profile?.thumbnailImageUrl.toString();
+                        userID = user.id.toString()
+                        name = user.kakaoAccount?.profile?.nickname.toString()
+                        email = user.kakaoAccount?.email.toString()
+                        photoSrc = user.kakaoAccount?.profile?.thumbnailImageUrl.toString()
                         Log.i("callUserInfo", "사용자 정보 요청 성공" +
                                 "\n회원번호: $userID" +
                                 "\n닉네임: $name" +
                                 "\n이메일: $email" +
                                 "\n프로필사진: $photoSrc")
-                        val intent = Intent(this, InitProfileActivity::class.java)
-                        intent.putExtra("userIDKey", userID)
-                        intent.putExtra("nameKey", name)
-                        intent.putExtra("emailKey", email)
-                        intent.putExtra("photoSrcKey", photoSrc)
-                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                        finish()
+                        diverge(userID, name, email, photoSrc)
 //
 //                        Log.i("callUserInfo2", "사용자 정보 요청 성공2" +
 //                                "\n회원번호: ${user.id}" +
@@ -116,24 +118,8 @@ class LoginActivity : AppCompatActivity() {
                 UserApiClient.instance.me { user, error ->
                     if (error != null) {
                         Log.e("callUserInfo", "사용자 정보 요청 실패", error)
-                    }
-                    else if (user != null) {
-                        userID = user.id.toString();
-                        name = user.kakaoAccount?.profile?.nickname.toString();
-                        email = user.kakaoAccount?.email.toString();
-                        photoSrc = user.kakaoAccount?.profile?.thumbnailImageUrl.toString();
-                        Log.i("callUserInfo", "사용자 정보 요청 성공" +
-                                "\n회원번호: $userID" +
-                                "\n닉네임: $name" +
-                                "\n이메일: $email" +
-                                "\n프로필사진: $photoSrc")
-                        val intent = Intent(this, InitProfileActivity::class.java)
-                        intent.putExtra("userIDKey", userID)
-                        intent.putExtra("nameKey", name)
-                        intent.putExtra("emailKey", email)
-                        intent.putExtra("photoSrcKey", photoSrc)
-                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                        finish()
+                    } else if (user != null) {
+                        diverge(userID, name, email, photoSrc)
                     }
                 }
             }
@@ -149,6 +135,31 @@ class LoginActivity : AppCompatActivity() {
             }
             Log.d("after callback", "aft")
 
+        }
+    }
+
+    private fun diverge(userID: String, name: String, email: String, photoSrc: String) {
+        val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
+        GlobalScope.launch{
+            val result = getUserAPI.getUser(
+                id = userID
+            )
+            if (result != null) {
+                withContext(Dispatchers.Main) {
+                    lateinit var intent : Intent
+                    if (result.body()!!.labels == null) {
+                        intent = Intent(this@LoginActivity, InitProfileActivity::class.java)
+                    } else {
+                        intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    }
+                    MyProfile.userID = userID
+                    MyProfile.name = name
+                    MyProfile.email = email
+                    MyProfile.photoSrc = photoSrc
+                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                    finish()
+                }
+            }
         }
     }
 }
