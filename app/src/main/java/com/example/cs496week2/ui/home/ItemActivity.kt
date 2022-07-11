@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.row_items.view.*
 class ItemActivity : AppCompatActivity() {
     private lateinit var binding: ActivityItemBinding
     var itemModal: ItemModal? = null
+    var tagAdapter: TagAdapter? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +27,19 @@ class ItemActivity : AppCompatActivity() {
 
 
         Glide.with(this).load(itemModal!!.imageSrc).into(binding.ivProfilePic)
-        Log.d("imageSrc", itemModal!!.imageSrc)
-        tvTest.text = itemModal!!.name
+//        Log.d("imageSrc", itemModal!!.imageSrc)
+//        tvTest.text = itemModal!!.name
+        etName.setText(itemModal!!.name)
+
+        var dummyTagList = arrayListOf(
+            "삼성전자", "LG전자", "네이버"
+        )
+
+        binding.rvWorkTag.setHasFixedSize(true)
+        tagAdapter = TagAdapter()
+        tagAdapter!!.setData(dummyTagList)
+
+        binding.rvWorkTag.adapter = tagAdapter;
 
 
     }
