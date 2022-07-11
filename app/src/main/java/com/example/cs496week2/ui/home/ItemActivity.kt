@@ -1,13 +1,12 @@
 package com.example.cs496week2.ui.home
 
-import android.content.ClipData
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.cs496week2.R
-import com.example.cs496week2.databinding.ActivityInitProfileBinding
 import com.example.cs496week2.databinding.ActivityItemBinding
 import kotlinx.android.synthetic.main.activity_item.*
 import kotlinx.android.synthetic.main.row_items.*
@@ -57,7 +56,24 @@ class ItemActivity : AppCompatActivity() {
         relationshipTagAdapter!!.setData(itemModal!!.relationshipTagList)
         rvRelationshipTag.adapter = relationshipTagAdapter;
 
+        btnEdit.visibility = View.GONE
+        btnDirect.visibility = View.VISIBLE
+        btnOnBehalfOf.visibility = View.VISIBLE
 
+        // set on-click listener for direct message
+        binding.btnDirect.setOnClickListener {
+            // send SMS directly
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + itemModal!!.phone))
+//            intent.putExtra("sms_body", "안녕하세요 " + itemModal!!.name + "님, '한다리건너'를 통해 알게 되어 연락 드립니다.")
+//            startActivity(intent)
+        }
+
+        // set on-click listener for direct message
+        binding.btnOnBehalfOf.setOnClickListener {
+            // notify the bridge person
+            //
+            Toast.makeText(this@ItemActivity, "이어주는 연결 다리에게 연락이 갔어요!", Toast.LENGTH_LONG).show()
+        }
 
 
     }

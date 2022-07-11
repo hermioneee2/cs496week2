@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.ItemActivity"
-    android:background="@color/primary_color">
+    android:background="@color/primary_color"
+    android:id="@+id/constraintContainer">
 
 <!--    <RelativeLayout-->
 <!--        android:layout_width="match_parent"-->
@@ -44,6 +45,21 @@
         android:layout_height="match_parent"
         android:background="@color/tertiary_color"
         >
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="13dp"
+            android:backgroundTint="#00ffffff"
+            android:fontFamily="@font/albertsanslight"
+            android:text="Edit Profile"
+            android:textAllCaps="false"
+            android:textColor="@color/tertiary_color"
+            android:visibility="gone"
+            />
 
         <!--profile pic-->
         <androidx.cardview.widget.CardView
@@ -403,7 +419,7 @@
             android:paddingBottom="30dp">
 
             <Button
-                android:id="@+id/btnMessage"
+                android:id="@+id/btnDirect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -415,12 +431,12 @@
 
             <!--submit-->
             <Button
-                android:id="@+id/btnSetMyProfile"
+                android:id="@+id/btnOnBehalfOf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@id/btnMessage"
+                android:layout_toRightOf="@id/btnDirect"
                 android:backgroundTint="@color/teal_200"
                 android:fontFamily="@font/albertsansmedium"
                 android:text="대신 물어봐주세요"
