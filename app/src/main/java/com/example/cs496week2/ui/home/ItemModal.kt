@@ -5,6 +5,6 @@ import java.io.Serializable
 data class ItemModal (
     var imageSrc: String,
     var name: String,
-    var desc: String
+    var tagList: ArrayList<String>
 
 ):Serializable

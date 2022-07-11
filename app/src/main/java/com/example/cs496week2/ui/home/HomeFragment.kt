@@ -24,11 +24,15 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    var dummyTagList = arrayListOf(
+        "삼성전자", "LG전자", "네이버"
+    )
+
     //한다리+한다리건너 지인 정보 모두 리턴
     var itemListModal = arrayOf(
-        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Apple", "apple desc"),
-        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Banana", "Banana desc"),
-        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Orange", "Orange desc")
+        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Apple", dummyTagList),
+        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Banana", dummyTagList),
+        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Orange", dummyTagList)
 
     )
 
