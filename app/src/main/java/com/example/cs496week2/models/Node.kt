@@ -8,5 +8,13 @@ data class Node(
     @SerializedName("labels")
     val labels: List<String>,
     @SerializedName("properties")
-    val properties: Property
+    val properties: Property,
+    @SerializedName("work")
+    val work: List<String>,
+    @SerializedName("hobby")
+    val hobby: List<String>,
+    @SerializedName("area")
+    val area: List<String>,
+    @SerializedName("relationship")
+    val relationship: String
 )
