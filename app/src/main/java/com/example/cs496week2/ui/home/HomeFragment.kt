@@ -30,9 +30,15 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
 
     //한다리+한다리건너 지인 정보 모두 리턴
     var itemListModal = arrayOf(
-        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Apple", dummyTagList),
-        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Banana", dummyTagList),
-        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Orange", dummyTagList)
+        ItemModal("11", "이혜림", "010-1463-5364", "hermioneee2@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+        ItemModal("12", "윤태영", "010-1233-4522", "tythankyou@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+        ItemModal("13", "윤하나", "010-1735-6275", "lollipop@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+        ItemModal("11", "김민수", "010-1463-5364", "minsu@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+        ItemModal("12", "이하연", "010-1233-4522", "hiyeon@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+        ItemModal("13", "박태균", "010-1735-6275", "tk4233@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+//        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Apple", dummyTagList),
+//        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Banana", dummyTagList),
+//        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Orange", dummyTagList)
 
     )
 

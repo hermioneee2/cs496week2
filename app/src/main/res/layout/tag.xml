@@ -13,7 +13,7 @@
     android:layout_marginRight="12dp"
     android:gravity="center"
     android:textColorHint="@color/white_disable"
-    android:textColor="@color/primary_color"
+    android:textColor="#6EDDBC"
     android:text="삼성"
     android:fontFamily="@font/albertsansmedium"
     android:layout_marginTop="5dp"
