@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
         GlobalScope.launch{
             val result = getUserAPI.getUserList(
-                param1 = "getPhoneList", param2 = "aa", body = list!!.toList()
+                param1 = "getPhoneList", param2 = MyProfile.userID, body = list!!.toList()
             )
             if (result != null) {
                 MyProfile.friendList = result.body()!!.map { node -> node.properties.userID }

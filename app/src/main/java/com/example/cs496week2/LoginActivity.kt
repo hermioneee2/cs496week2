@@ -1,6 +1,9 @@
 package com.example.cs496week2
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -39,6 +42,17 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(
+                Manifest.permission.READ_CONTACTS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.READ_CONTACTS),
+                MainActivity.PERMISSIONS_REQUEST_READ_CONTACTS
+            )
+            //callback onRequestPermissionsResult
+        }
 
         // If already logged in once then clicking is skipped
         // comment out for coding purpose,
@@ -119,6 +133,10 @@ class LoginActivity : AppCompatActivity() {
                     if (error != null) {
                         Log.e("callUserInfo", "사용자 정보 요청 실패", error)
                     } else if (user != null) {
+                        userID = user.id.toString()
+                        name = user.kakaoAccount?.profile?.nickname.toString()
+                        email = user.kakaoAccount?.email.toString()
+                        photoSrc = user.kakaoAccount?.profile?.thumbnailImageUrl.toString()
                         diverge(userID, name, email, photoSrc)
                     }
                 }

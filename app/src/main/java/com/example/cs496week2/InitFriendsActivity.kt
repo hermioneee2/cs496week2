@@ -5,11 +5,24 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.transition.Slide
+import android.util.Log
 import android.view.Gravity
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cs496week2.databinding.ActivityInitFriendsBinding
+import com.example.cs496week2.interfaces.GetUserAPI
+import com.example.cs496week2.models.Node
+import com.example.cs496week2.models.Property
+import com.example.cs496week2.objects.MyProfile
+import com.example.cs496week2.objects.RetrofitHelper
+import com.example.cs496week2.ui.home.ItemAdapter
+import com.example.cs496week2.ui.home.ItemModal
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class InitFriendsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInitFriendsBinding
@@ -43,7 +56,25 @@ class InitFriendsActivity : AppCompatActivity() {
             // send data
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-            finish()
+
+            val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
+            GlobalScope.launch{
+                val result = getUserAPI.postUser(
+                    id = MyProfile.userID,
+                    body = Node(
+                        0,
+                        listOf("Person"),
+                        Property(
+                            MyProfile.userID, MyProfile.name, MyProfile.phone, MyProfile.email, MyProfile.photoSrc
+                        ),
+                        listOf(), listOf(), listOf(), ""
+                    )
+                )
+                if (result != null) {
+                    Log.d("Taeyoung", result.body()!!.toString())
+                }
+                finish()
+            }
         }
     }
 }
