@@ -1,6 +1,7 @@
 package com.example.cs496week2.ui.home
 
 import android.content.ClipData
+import android.nfc.Tag
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ class ItemAdapter(
 ): RecyclerView.Adapter<ItemAdapter.ItemAdapterVH>(), Filterable {
     var itemModalList = ArrayList<ItemModal>();
     var itemModalListFilter = ArrayList<ItemModal>();
+    var tagAdapter: TagAdapter? = null;
 
     fun setData(itemModalList: ArrayList<ItemModal>){
         this.itemModalList = itemModalList
@@ -43,11 +45,13 @@ class ItemAdapter(
         Glide.with(holder.ivProfilePic).load(itemModal.imageSrc).into(holder.ivProfilePic.ivProfilePic)
 
         holder.name.text = itemModal.name
-        holder.desc.text = itemModal.desc
+//        holder.desc.text = itemModal.desc
 
-//        holder.rvTag.layoutManager = LinearLayoutManager(context);
-//        holder.rvTag.setHasFixedSize(true)
-//        holder.rvTag.adapter = itemAdapter
+        holder.rvTag.setHasFixedSize(true)
+        tagAdapter = TagAdapter()
+        tagAdapter!!.setData(itemModal.tagList)
+
+        holder.rvTag.adapter = tagAdapter;
 
         holder.itemView.setOnClickListener{
             clickedItem.clickedItem(itemModal)
@@ -61,10 +65,8 @@ class ItemAdapter(
     class ItemAdapterVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var ivProfilePic = itemView.ivProfilePic
         var name = itemView.tvName
-        var desc = itemView.tvDesc
+//        var desc = itemView.tvDesc
         var rvTag = itemView.rvTag
-
-
     }
 
     override fun getFilter(): Filter {
@@ -80,8 +82,14 @@ class ItemAdapter(
                     var searchChr: String = charsequence.toString().toLowerCase();
                     var itemModal = ArrayList<ItemModal>();
                     for (items in itemModalListFilter) {
-                        if (items.name.toLowerCase().contains(searchChr) || items.desc.toLowerCase().contains(searchChr)) {
+                        if (items.name.toLowerCase().contains(searchChr)) {
                             itemModal.add(items)
+                        } else {
+                            for (tags in items.tagList) {
+                                if (tags.contains(searchChr)) {
+                                    itemModal.add(items)
+                                }
+                            }
                         }
 
                     }
