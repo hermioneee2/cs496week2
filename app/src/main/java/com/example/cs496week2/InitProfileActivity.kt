@@ -1,6 +1,8 @@
 package com.example.cs496week2
 
 import android.R
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -90,7 +92,11 @@ class InitProfileActivity : AppCompatActivity() {
             val phone = binding.etPhone.text;
             val email = binding.etEmail.text;
             Toast.makeText(this@InitProfileActivity, name, Toast.LENGTH_LONG).show()
+            Toast.makeText(this@InitProfileActivity, "Your profile is set.", Toast.LENGTH_SHORT).show()
             // send data
+            val intent = Intent(this, InitFriendsActivity::class.java)
+            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP), ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+            finish()
         }
     }
     private fun settingList() {

@@ -104,11 +104,11 @@ class LoginActivity : AppCompatActivity() {
                         name = user.kakaoAccount?.profile?.nickname.toString();
                         email = user.kakaoAccount?.email.toString();
                         photoSrc = user.kakaoAccount?.profile?.thumbnailImageUrl.toString();
-//                        Log.i("callUserInfo", "사용자 정보 요청 성공" +
-//                                "\n회원번호: $userID" +
-//                                "\n닉네임: $name" +
-//                                "\n이메일: $email" +
-//                                "\n프로필사진: $photoSrc")
+                        Log.i("callUserInfo", "사용자 정보 요청 성공" +
+                                "\n회원번호: $userID" +
+                                "\n닉네임: $name" +
+                                "\n이메일: $email" +
+                                "\n프로필사진: $photoSrc")
                         val intent = Intent(this, InitProfileActivity::class.java)
                         intent.putExtra("userIDKey", userID)
                         intent.putExtra("nameKey", name)

@@ -20,6 +20,20 @@
 <!--        android:background="@color/primary_color"-->
 <!--        >-->
 
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textColorHint="@color/white_disable"
+        android:textColor="@color/secondary_color"
+        android:completionThreshold="1"
+        android:text="1. SET PROFILE"
+        android:textSize="20dp"
+        android:fontFamily="@font/albertsansmedium"
+        />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
