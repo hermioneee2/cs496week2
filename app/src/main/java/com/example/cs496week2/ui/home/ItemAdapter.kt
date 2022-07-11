@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cs496week2.R
@@ -44,6 +45,10 @@ class ItemAdapter(
         holder.name.text = itemModal.name
         holder.desc.text = itemModal.desc
 
+//        holder.rvTag.layoutManager = LinearLayoutManager(context);
+//        holder.rvTag.setHasFixedSize(true)
+//        holder.rvTag.adapter = itemAdapter
+
         holder.itemView.setOnClickListener{
             clickedItem.clickedItem(itemModal)
         }
@@ -57,6 +62,9 @@ class ItemAdapter(
         var ivProfilePic = itemView.ivProfilePic
         var name = itemView.tvName
         var desc = itemView.tvDesc
+        var rvTag = itemView.rvTag
+
+
     }
 
     override fun getFilter(): Filter {

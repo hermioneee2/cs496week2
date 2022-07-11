@@ -113,8 +113,9 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
                 } else {
 //                    _binding!!.tvHome.text = "something"
                     _binding!!.recyclerView.visibility = View.VISIBLE
-                    itemAdapter!!.filter.filter(p0);
+//                    itemAdapter!!.filter.filter(p0);
                 }
+                itemAdapter!!.filter.filter(p0);
 
                 return true
             }
