@@ -13,4 +13,5 @@ object MyProfile {
     var hobby: List<String> = listOf()
     var area: List<String> = listOf()
     var relationship: String = ""
+    var friendList: List<String> = listOf()
 }
