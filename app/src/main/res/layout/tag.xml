@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tvWorkTag1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingRight="13dp"
+    android:paddingLeft="13dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:gravity="center"
+    android:textColorHint="@color/white_disable"
+    android:textColor="@color/primary_color"
+    android:text="삼성"
+    android:fontFamily="@font/albertsansmedium"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/rounded_corner"
+    android:completionThreshold="1"
+    app:theme="@style/AppSearchView" />
+
+
