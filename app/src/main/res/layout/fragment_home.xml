@@ -5,13 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/container"
         android:background="@color/primary_color"
         android:orientation="vertical"
         >
+
+        <TextView
+            android:id="@+id/explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="나의 태그와 연관된 한다리건너 친구들"
+            android:textColor="@color/secondary_color"
+            android:fontFamily="@font/albertsansmedium"
+            android:layout_margin="15dp"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSearchResult"
@@ -25,14 +36,18 @@
             android:id="@+id/rvDefault"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="2dp">
+            android:layout_below="@+id/explanation"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp">
         </androidx.recyclerview.widget.RecyclerView>
 
 
 
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

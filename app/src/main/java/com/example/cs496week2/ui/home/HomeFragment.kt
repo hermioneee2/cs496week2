@@ -133,11 +133,13 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
 //                Log.e("TAG", "=> $p0")
                 if (p0 == null || p0.isEmpty()){
                     _binding!!.rvSearchResult.visibility = View.GONE
-//                    _binding!!.rvDefault.visibility = View.VISIBLE
+                    _binding!!.rvDefault.visibility = View.VISIBLE
+                    _binding!!.explanation.visibility = View.VISIBLE
 
                 } else {
                     _binding!!.rvSearchResult.visibility = View.VISIBLE
-//                    _binding!!.rvDefault.visibility = View.GONE
+                    _binding!!.rvDefault.visibility = View.GONE
+                    _binding!!.explanation.visibility = View.GONE
                 }
                 itemAdapter!!.filter.filter(p0);
 
