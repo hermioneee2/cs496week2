@@ -27,7 +27,6 @@ class NotificationsFragment : Fragment() {
     var itemListModal = arrayListOf(
         ItemModal("11", "이혜림", "010-1463-5364", "hermioneee2@gmail.com",dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
         ItemModal("12", "윤태영", "010-1233-4522", "tythankyou@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
-        ItemModal("13", "윤하나", "010-1735-6275", "lollipop@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
     )
 
     var itemModalList = arrayListOf(
@@ -56,7 +55,6 @@ class NotificationsFragment : Fragment() {
         notificationAdapter!!.setData(itemModalList)
 
         binding.recyclerView.adapter = notificationAdapter
-
 
         return root
     }

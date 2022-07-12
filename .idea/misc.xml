@@ -7,21 +7,22 @@
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/drawable/rounded_corner.xml" value="0.1955" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_init_friends.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_init_profile.xml" value="0.22560975609756098" />
-        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_item.xml" value="0.264" />
+        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_item.xml" value="0.1" />
+        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_item2.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_item_editable.xml" value="0.1" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_login.xml" value="0.1875" />
-        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_main.xml" value="0.28351449275362317" />
+        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_main.xml" value="0.24836601307189543" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_setting.xml" value="0.2" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/fragment_dashboard.xml" value="0.1875" />
-        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/fragment_home.xml" value="0.2916666666666667" />
-        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/fragment_notifications.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/fragment_notifications.xml" value="0.31189083820662766" />
+        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/fragment_profile.xml" value="0.1529888551165147" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/row_items.xml" value="0.1875" />
+        <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/row_notifications.xml" value="0.536" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/sample_tag.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/layout/tag.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/hermi/AndroidStudioProjects/cs496week2/app/src/main/res/menu/menu.xml" value="0.3533834586466165" />
-        <entry key="..\:/Users/taeyo/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_init_profile.xml" value="0.6" />
-        <entry key="..\:/Users/taeyo/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_item.xml" value="0.885670731707317" />
-        <entry key="..\:/Users/taeyo/AndroidStudioProjects/cs496week2/app/src/main/res/layout/activity_item_editable.xml" value="0.885670731707317" />
       </map>
     </option>
   </component>
