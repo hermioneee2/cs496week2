@@ -1,6 +1,8 @@
 # 한다리건너
 
-![overthebridgewithname.png](%E1%84%92%E1%85%A1%E1%86%AB%E1%84%83%E1%85%A1%E1%84%85%E1%85%B5%E1%84%80%E1%85%A5%E1%86%AB%E1%84%82%E1%85%A5%200696e2ede63e4360bfd632f5798d96ce/overthebridgewithname.png)
+<p float="left">
+  <img src="%E1%84%92%E1%85%A1%E1%86%AB%E1%84%83%E1%85%A1%E1%84%85%E1%85%B5%E1%84%80%E1%85%A5%E1%86%AB%E1%84%82%E1%85%A5%200696e2ede63e4360bfd632f5798d96ce/overthebridgewithname.png" width="250" />
+</p>
 
 > “음.. 주변에 괜찮은 사람 소개시켜 줄 수 있어?”
 ”삼성전자에 가고 싶은데, 혹시 아는 사람 있어요?”
