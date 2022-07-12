@@ -29,7 +29,7 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
     )
 
     //한다리+한다리건너 지인 정보 모두 리턴
-    var itemListModal = arrayOf(
+    var itemListModal = arrayListOf(
         ItemModal("11", "이혜림", "010-1463-5364", "hermioneee2@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
         ItemModal("12", "윤태영", "010-1233-4522", "tythankyou@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
         ItemModal("13", "윤하나", "010-1735-6275", "lollipop@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
@@ -45,6 +45,13 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
     var itemModalList = ArrayList<ItemModal>();
 
     var itemAdapter: ItemAdapter? = null;
+    var itemTagAdapter: ItemTagAdapter? = null;
+
+    //DUMMY FOR TAGS
+    var itemTagModalList = arrayListOf(
+        ItemTagModal("삼성전자", itemListModal),
+        ItemTagModal("LG", itemListModal)
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,25 +64,27 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
         for (item in itemListModal){
             itemModalList.add(item)
         }
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(context);
-        binding.recyclerView.setHasFixedSize(true)
-
-//        Log.d("itemModalList.size", itemModalList.size.toString())
+        //SEARCH RESULT
+        binding.rvSearchResult.layoutManager = LinearLayoutManager(context);
+        binding.rvSearchResult.setHasFixedSize(true)
 
         itemAdapter = ItemAdapter(this);
         itemAdapter!!.setData(itemModalList)
 
-//        Log.d("itemModalList.size", itemModalList.size.toString())
+        binding.rvSearchResult.adapter = itemAdapter
 
-        binding.recyclerView.adapter = itemAdapter
+        //DEFAULT BY TAG
+        binding.rvDefault.layoutManager = LinearLayoutManager(context);
+        binding.rvDefault.setHasFixedSize(true)
+
+        itemTagAdapter = ItemTagAdapter();
+        itemTagAdapter!!.setData(itemTagModalList)
+
+        binding.rvDefault.adapter = itemTagAdapter
 
         setHasOptionsMenu(true);
 
@@ -117,13 +126,12 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
             override fun onQueryTextChange(p0: String?): Boolean {
 //                Log.e("TAG", "=> $p0")
                 if (p0 == null || p0.isEmpty()){
-//                    _binding!!.tvHome.text = "empty"
-                    _binding!!.recyclerView.visibility = View.GONE
+                    _binding!!.rvSearchResult.visibility = View.GONE
+//                    _binding!!.rvDefault.visibility = View.VISIBLE
 
                 } else {
-//                    _binding!!.tvHome.text = "something"
-                    _binding!!.recyclerView.visibility = View.VISIBLE
-//                    itemAdapter!!.filter.filter(p0);
+                    _binding!!.rvSearchResult.visibility = View.VISIBLE
+//                    _binding!!.rvDefault.visibility = View.GONE
                 }
                 itemAdapter!!.filter.filter(p0);
 
