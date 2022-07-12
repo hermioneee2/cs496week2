@@ -46,9 +46,12 @@
                     android:scheme="kakao52b7f02066b5d91072cfaa82aa8fb46f" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".InitProfileActivity" />
-        <activity android:name=".InitFriendsActivity" />
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".InitProfileActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".InitFriendsActivity"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

@@ -4,5 +4,5 @@ import java.io.Serializable
 
 data class ItemTagModal (
     var tag: String,
-    var profileList: ArrayList<ItemModal>
+    var profileList: MutableList<ItemModal>
 ):Serializable

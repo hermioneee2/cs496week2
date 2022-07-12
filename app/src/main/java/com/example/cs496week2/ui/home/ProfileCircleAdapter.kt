@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.profile_circle.view.*
 class ProfileCircleAdapter(
     var clickedItem: ClickedItem
 ): RecyclerView.Adapter<ProfileCircleAdapter.ProfileCircleAdapterVH>() {
-    var profileList = ArrayList<ItemModal>();
+    lateinit var profileList : MutableList<ItemModal>;
 
-    fun setData(profileList: ArrayList<ItemModal>){
+    fun setData(profileList: MutableList<ItemModal>){
         this.profileList = profileList
         notifyDataSetChanged()
     }

@@ -72,10 +72,10 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
         val root: View = binding.root
 
         val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
-        GlobalScope.launch{
+        GlobalScope.launch {
             val result = getUserAPI.getFriends(id = MyProfile.userID)
             if (result != null) {
-                result.body()!!.forEach{ i ->
+                result.body()!!.forEach { i ->
                     Log.d("Taeyoung", i.properties.name)
                     val node = getUserAPI.getUser(id = i.properties.userID)
                     val workTagList: ArrayList<String> = ArrayList(node.body()!!.work)
@@ -88,44 +88,49 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
                     tagList.addAll(areaTagList)
                     tagList.addAll(hobbyTagList)
                     tagList.addAll(relationshipTagList)
-                    itemListModal.add(ItemModal(
-                        i.properties.userID, i.properties.name,
-                        i.properties.phone, i.properties.email,
-                        workTagList, areaTagList, hobbyTagList, relationshipTagList,
-                        i.properties.photoSrc, tagList
-                    ))}
+                    itemListModal.add(
+                        ItemModal(
+                            i.properties.userID, i.properties.name,
+                            i.properties.phone, i.properties.email,
+                            workTagList, areaTagList, hobbyTagList, relationshipTagList,
+                            i.properties.photoSrc, tagList
+                        )
+                    )
+                }
             }
 
-            for (item in itemListModal){
+            for (item in itemListModal) {
                 itemModalList.add(item)
             }
 
 //        Log.d("itemModalList.size", itemModalList.size.toString())
             withContext(Dispatchers.Main) {
-                binding.recyclerView.layoutManager = LinearLayoutManager(context);
-                binding.recyclerView.setHasFixedSize(true)
+                binding.rvSearchResult.layoutManager = LinearLayoutManager(context);
+                binding.rvSearchResult.setHasFixedSize(true)
 
                 itemAdapter = ItemAdapter(this@HomeFragment);
                 itemAdapter!!.setData(itemModalList)
-        //SEARCH RESULT
-        binding.rvSearchResult.layoutManager = LinearLayoutManager(context);
-        binding.rvSearchResult.setHasFixedSize(true)
+                //SEARCH RESULT
+                binding.rvSearchResult.layoutManager = LinearLayoutManager(context);
+                binding.rvSearchResult.setHasFixedSize(true)
 
-        itemAdapter = ItemAdapter(this);
-        itemAdapter!!.setData(itemModalList)
+                itemAdapter = ItemAdapter(this@HomeFragment);
+                itemAdapter!!.setData(itemModalList)
 
-        binding.rvSearchResult.adapter = itemAdapter
+                binding.rvSearchResult.adapter = itemAdapter
 
-        //DEFAULT BY TAG
-        binding.rvDefault.layoutManager = LinearLayoutManager(context);
-        binding.rvDefault.setHasFixedSize(true)
+                //DEFAULT BY TAG
+                binding.rvDefault.layoutManager = LinearLayoutManager(context);
+                binding.rvDefault.setHasFixedSize(true)
 
-        itemTagAdapter = ItemTagAdapter(this);
-        itemTagAdapter!!.setData(itemTagModalList)
+                itemTagAdapter = ItemTagAdapter(this@HomeFragment);
+                itemTagAdapter!!.setData(itemTagModalList)
 
-        binding.rvDefault.adapter = itemTagAdapter
+                binding.rvDefault.adapter = itemTagAdapter
 
-        setHasOptionsMenu(true);
+                setHasOptionsMenu(true);
+            }
+        }
 
         return root
     }
