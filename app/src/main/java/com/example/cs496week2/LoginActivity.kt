@@ -43,12 +43,17 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val permissionList = arrayOf(
+            Manifest.permission.READ_CONTACTS,
+            Manifest.permission.SEND_SMS,
+        )
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(
                 Manifest.permission.READ_CONTACTS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             requestPermissions(
-                arrayOf(Manifest.permission.READ_CONTACTS),
+                permissionList,
                 MainActivity.PERMISSIONS_REQUEST_READ_CONTACTS
             )
             //callback onRequestPermissionsResult

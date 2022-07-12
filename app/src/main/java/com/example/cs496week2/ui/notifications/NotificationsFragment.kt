@@ -114,7 +114,7 @@ class NotificationsFragment : Fragment() {
                 binding.recyclerView.layoutManager = LinearLayoutManager(context);
                 binding.recyclerView.setHasFixedSize(true)
 
-                notificationAdapter = NotificationAdapter();
+                notificationAdapter = NotificationAdapter(requireContext());
                 notificationAdapter!!.setData(itemModalList)
 
                 binding.recyclerView.adapter = notificationAdapter
