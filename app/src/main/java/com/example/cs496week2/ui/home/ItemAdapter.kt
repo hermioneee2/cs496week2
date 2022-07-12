@@ -95,6 +95,7 @@ class ItemAdapter(
 
                     }
 
+                    itemModal = ArrayList(itemModal.distinctBy { item -> item.userID })
                     filterResults.count = itemModal.size
                     filterResults.values = itemModal
                 }

@@ -30,10 +30,6 @@ class NotificationsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    var dummyTagList = arrayListOf(
-        "삼성전자", "LG전자", "네이버"
-    )
-
     var itemListModal = ArrayList<ItemModal>()
 
     var itemModalList = ArrayList<ArrayList<ItemModal>>()

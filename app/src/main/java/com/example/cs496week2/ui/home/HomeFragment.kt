@@ -103,7 +103,7 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
                 .plus(MyProfile.hobby).plus(listOf(MyProfile.relationship)).forEach { tag ->
                     var tagModal = itemListModal.filter { modal -> modal.tagList.contains(tag) }
                     itemTagModalList.add(ItemTagModal(tag, tagModal.toMutableList()))
-                    Log.d("Taeyoung HomeFragment", tag)
+                    Log.d("Taeyoung HomeFragment", tagModal.toString())
                 }
 
             for (item in itemListModal) {
