@@ -16,7 +16,7 @@ import com.example.cs496week2.R
 import com.example.cs496week2.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
+class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.ClickedItem  {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -81,7 +81,7 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
         binding.rvDefault.layoutManager = LinearLayoutManager(context);
         binding.rvDefault.setHasFixedSize(true)
 
-        itemTagAdapter = ItemTagAdapter();
+        itemTagAdapter = ItemTagAdapter(this);
         itemTagAdapter!!.setData(itemTagModalList)
 
         binding.rvDefault.adapter = itemTagAdapter
@@ -105,8 +105,14 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
         val intent = Intent(activity, ItemActivity::class.java)
         intent.putExtra("data", itemModal1)
         startActivity(intent)
+    }
 
+    override fun clickedItem2(itemProfile: ItemModal) {
+        var itemModal1 = itemProfile;
 
+        val intent = Intent(activity, ItemActivity::class.java)
+        intent.putExtra("data", itemModal1)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

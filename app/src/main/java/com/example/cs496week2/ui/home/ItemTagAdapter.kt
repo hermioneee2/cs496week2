@@ -1,6 +1,7 @@
 package com.example.cs496week2.ui.home
 
 import android.content.ClipData
+import android.content.Intent
 import android.nfc.Tag
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,8 @@ import kotlinx.android.synthetic.main.activity_item.view.*
 import kotlinx.android.synthetic.main.row_items_tag.view.tvTag
 import kotlinx.android.synthetic.main.row_items_tag.view.rvProfile
 
-class ItemTagAdapter(): RecyclerView.Adapter<ItemTagAdapter.ItemTagAdapterVH>() {
+class ItemTagAdapter(    var clickedItem: ProfileCircleAdapter.ClickedItem
+): RecyclerView.Adapter<ItemTagAdapter.ItemTagAdapterVH>(){
     var itemTagModalList = ArrayList<ItemTagModal>();
     var profileCircleAdapter: ProfileCircleAdapter? = null;
 
@@ -39,7 +41,7 @@ class ItemTagAdapter(): RecyclerView.Adapter<ItemTagAdapter.ItemTagAdapterVH>() 
         holder.tvTag.text = itemTagModal.tag
 
         holder.rvProfile.setHasFixedSize(true)
-        profileCircleAdapter = ProfileCircleAdapter()
+        profileCircleAdapter = ProfileCircleAdapter(clickedItem)
         profileCircleAdapter!!.setData(itemTagModal.profileList)
         holder.rvProfile.adapter = profileCircleAdapter;
     }
@@ -52,5 +54,13 @@ class ItemTagAdapter(): RecyclerView.Adapter<ItemTagAdapter.ItemTagAdapterVH>() 
         var tvTag = itemView.tvTag
         var rvProfile = itemView.rvProfile
     }
+
+//    override fun clickedItem(itemProfile: ItemModal) {
+//        var itemModal1 = itemProfile;
+//
+//        val intent = Intent(activity, ItemActivity::class.java)
+//        intent.putExtra("data", itemModal1)
+//        requireActivity.startActivity(intent)
+//    }
 
 }
