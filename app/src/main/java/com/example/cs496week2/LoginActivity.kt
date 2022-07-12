@@ -165,15 +165,19 @@ class LoginActivity : AppCompatActivity() {
             if (result != null) {
                 withContext(Dispatchers.Main) {
                     lateinit var intent : Intent
-                    if (result.body()!!.labels == null) {
-                        intent = Intent(this@LoginActivity, InitProfileActivity::class.java)
-                    } else {
-                        intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    }
                     MyProfile.userID = userID
                     MyProfile.name = name
                     MyProfile.email = email
                     MyProfile.photoSrc = photoSrc
+                    if (result.body()!!.labels == null) {
+                        intent = Intent(this@LoginActivity, InitProfileActivity::class.java)
+                    } else {
+                        intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        MyProfile.work = result.body()!!.work
+                        MyProfile.hobby = result.body()!!.hobby
+                        MyProfile.area = result.body()!!.area
+                        MyProfile.relationship = result.body()!!.relationship
+                    }
                     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                     finish()
                 }

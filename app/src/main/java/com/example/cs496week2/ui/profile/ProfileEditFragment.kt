@@ -1,6 +1,7 @@
 package com.example.cs496week2.ui.profile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +15,16 @@ import com.example.cs496week2.R
 import com.example.cs496week2.databinding.ActivityItemBinding
 import com.example.cs496week2.databinding.ActivityItemEditableBinding
 import com.example.cs496week2.databinding.FragmentProfileBinding
+import com.example.cs496week2.interfaces.GetUserAPI
+import com.example.cs496week2.models.Node
+import com.example.cs496week2.models.Property
 import com.example.cs496week2.objects.MyProfile
+import com.example.cs496week2.objects.RetrofitHelper
 import com.example.cs496week2.ui.home.ItemModal
 import com.example.cs496week2.ui.home.TagAdapter
 import kotlinx.android.synthetic.main.activity_item.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ProfileEditFragment : Fragment() {
 
@@ -104,8 +111,31 @@ class ProfileEditFragment : Fragment() {
             )
         )
 
-
-
+        // set on-click listener for adding tags //WORK
+        binding.btnWork.setOnClickListener {
+            val newWork = binding.actvWork.text;
+            itemModal!!.workTagList.add(newWork.toString())
+            binding.actvWork.setText("")
+            binding.rvWorkTag.adapter!!.notifyDataSetChanged()
+        }
+        binding.btnArea.setOnClickListener {
+            val newArea = binding.actvArea.text;
+            itemModal!!.areaTagList.add(newArea.toString())
+            binding.actvArea.setText("")
+            binding.rvAreaTag.adapter!!.notifyDataSetChanged()
+        }
+        binding.btnHobby.setOnClickListener {
+            val newHobby = binding.actvHobby.text;
+            itemModal!!.hobbyTagList.add(newHobby.toString())
+            binding.actvHobby.setText("")
+            binding.rvHobbyTag.adapter!!.notifyDataSetChanged()
+        }
+        binding.btnRelationship.setOnClickListener {
+            val newWork = binding.actvRelationship.text;
+            itemModal!!.relationshipTagList.add(newWork.toString())
+            binding.actvRelationship.setText("")
+            binding.rvRelationshipTag.adapter!!.notifyDataSetChanged()
+        }
 
         Glide.with(this).load(itemModal!!.photoSrc).into(binding.ivProfilePic)
 
@@ -113,6 +143,28 @@ class ProfileEditFragment : Fragment() {
             var fr = getFragmentManager()?.beginTransaction()
             fr?.replace(R.id.nav_host_fragment_activity_main, ProfileFragment())
             fr?.commit()
+            MyProfile.email = binding.etEmail.text.toString()
+            MyProfile.work = itemModal.workTagList
+            MyProfile.hobby = itemModal.hobbyTagList
+            MyProfile.area = itemModal.areaTagList
+            MyProfile.relationship = itemModal.relationshipTagList.get(0)
+            val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
+            GlobalScope.launch{
+                val result = getUserAPI.postUser(
+                    id = MyProfile.userID,
+                    body = Node(
+                        0,
+                        listOf("Person"),
+                        Property(
+                            MyProfile.userID, MyProfile.name, MyProfile.phone, MyProfile.email, MyProfile.photoSrc
+                        ),
+                        MyProfile.work, MyProfile.hobby, MyProfile.area, ""
+                    )
+                )
+                if (result != null) {
+                    Log.d("ProfileEditFragment", result.body()!!.toString())
+                }
+            }
         }
 
         return root

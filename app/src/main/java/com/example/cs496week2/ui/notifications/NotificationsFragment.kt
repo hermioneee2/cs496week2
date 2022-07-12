@@ -1,6 +1,7 @@
 package com.example.cs496week2.ui.notifications
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cs496week2.databinding.FragmentNotificationsBinding
+import com.example.cs496week2.interfaces.GetUserAPI
+import com.example.cs496week2.models.Node
+import com.example.cs496week2.models.Property
+import com.example.cs496week2.objects.MyProfile
+import com.example.cs496week2.objects.RetrofitHelper
 import com.example.cs496week2.ui.home.ItemAdapter
 import com.example.cs496week2.ui.home.ItemModal
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NotificationsFragment : Fragment() {
 
@@ -25,8 +35,30 @@ class NotificationsFragment : Fragment() {
     )
 
     var itemListModal = arrayListOf(
-        ItemModal("11", "이혜림", "010-1463-5364", "hermioneee2@gmail.com",dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
-        ItemModal("12", "윤태영", "010-1233-4522", "tythankyou@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+        ItemModal(
+            "11",
+            "이혜림",
+            "010-1463-5364",
+            "hermioneee2@gmail.com",
+            dummyTagList,
+            dummyTagList,
+            dummyTagList,
+            dummyTagList,
+            "https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg",
+            dummyTagList
+        ),
+        ItemModal(
+            "12",
+            "윤태영",
+            "010-1233-4522",
+            "tythankyou@gmail.com",
+            dummyTagList,
+            dummyTagList,
+            dummyTagList,
+            dummyTagList,
+            "https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg",
+            dummyTagList
+        ),
     )
 
     var itemModalList = arrayListOf(
@@ -48,14 +80,46 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(context);
-        binding.recyclerView.setHasFixedSize(true)
+        val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
+        GlobalScope.launch {
+            val result = getUserAPI.getTempLinks(id = MyProfile.userID)
+            Log.d("Taeyoung Not", result.body()!!.toString())
+            result.body()!!.forEach {nodelist ->
+                val node1 = nodelist[0]
+                val node2 = nodelist[1]
+                val result1 = getUserAPI.getUser(id = node1.properties.userID)
+                val result2 = getUserAPI.getUser(id = node2.properties.userID)
+                val actualNode1 = result1.body()!!
+                val actualNode2 = result2.body()!!
+                itemModalList.add(
+                    arrayListOf(
+                        ItemModal(
+                            actualNode1.properties.userID, actualNode1.properties.name,
+                            actualNode1.properties.phone, actualNode1.properties.email,
+                            ArrayList(actualNode1.work), ArrayList(actualNode1.area),
+                            ArrayList(actualNode1.hobby), ArrayList(listOf(actualNode1.relationship)),
+                            actualNode1.properties.photoSrc, ArrayList()
+                        ),
+                        ItemModal(
+                            actualNode2.properties.userID, actualNode2.properties.name,
+                            actualNode2.properties.phone, actualNode2.properties.email,
+                            ArrayList(actualNode2.work), ArrayList(actualNode2.area),
+                            ArrayList(actualNode2.hobby), ArrayList(listOf(actualNode2.relationship)),
+                            actualNode2.properties.photoSrc, ArrayList())
+                    )
+                )
+            }
 
-        notificationAdapter = NotificationAdapter();
-        notificationAdapter!!.setData(itemModalList)
+            withContext(Dispatchers.Main) {
+                binding.recyclerView.layoutManager = LinearLayoutManager(context);
+                binding.recyclerView.setHasFixedSize(true)
 
-        binding.recyclerView.adapter = notificationAdapter
+                notificationAdapter = NotificationAdapter();
+                notificationAdapter!!.setData(itemModalList)
 
+                binding.recyclerView.adapter = notificationAdapter
+            }
+        }
         return root
     }
 

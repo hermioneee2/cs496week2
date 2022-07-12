@@ -42,6 +42,7 @@
             >
 
             <!--submit-->
+
             <Button
                 android:id="@+id/btnStartApp"
                 android:text="Set My Profile"
@@ -56,7 +57,317 @@
                 android:backgroundTint="@color/teal_200"
                 />
 
+            <!--work tags-->
+            <RelativeLayout
+                android:id="@+id/rlWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/ivWorkIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_business_center_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvWorkTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_toRightOf="@id/ivWorkIcon"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:text="Company"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvWork"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/primary_color"
+                    android:completionThreshold="1"
+                    android:gravity="center"
+                    android:hint="나의 직장"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white_disable"
+                    app:theme="@style/AppSearchView" />
+
+                <Button
+                    android:id="@+id/btnWork"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-2dp"
+                    android:background="@drawable/ic_baseline_add_circle_24"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/secondary_color" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/rlWork"
+                android:background="#384651"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvWorkTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlWork"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="32dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <!--area tags-->
+            <RelativeLayout
+                android:id="@+id/rlArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rvWorkTag"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/ivAreaIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_military_tech_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvAreaTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_toRightOf="@id/ivAreaIcon"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:text="Expertise"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvArea"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/primary_color"
+                    android:completionThreshold="1"
+                    android:gravity="center"
+                    android:hint="나의 전문분야"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white_disable"
+                    app:theme="@style/AppSearchView" />
+
+                <Button
+                    android:id="@+id/btnArea"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-2dp"
+                    android:background="@drawable/ic_baseline_add_circle_24"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@color/secondary_color" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/rlArea"
+                android:background="#384651"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAreaTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlArea"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="32dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <!--hobby tags-->
+            <RelativeLayout
+                android:id="@+id/rlHobby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rvAreaTag"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="40dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivHobbyIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_sports_basketball_24"
+                    app:tint="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tvHobbyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_toRightOf="@id/ivHobbyIcon"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:text="Hobby"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvHobby"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:textColorHint="@color/white_disable"
+                    android:textColor="@color/white"
+                    android:hint="나의 취미"
+                    android:background="@color/primary_color"
+                    android:completionThreshold="1"
+                    app:theme="@style/AppSearchView" />
+
+                <Button
+                    android:id="@+id/btnHobby"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:textAllCaps="false"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-2dp"
+                    app:backgroundTint="@color/secondary_color"
+                    android:background="@drawable/ic_baseline_add_circle_24"
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/rlHobby"
+                android:background="#384651"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHobbyTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlHobby"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="32dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <!--relationship tags-->
+            <RelativeLayout
+                android:id="@+id/rlRelationship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rvHobbyTag"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="40dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivRelationshipIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_favorite_24"
+                    app:tint="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tvRelationshipTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_toRightOf="@id/ivRelationshipIcon"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:text="Relationship"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvRelationship"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:textColorHint="@color/white_disable"
+                    android:textColor="@color/white"
+                    android:hint="나의 연애상태"
+                    android:background="@color/primary_color"
+                    android:completionThreshold="1"
+                    app:theme="@style/AppSearchView" />
+
+                <Button
+                    android:id="@+id/btnRelationship"
+                    android:fontFamily="@font/albertsansmedium"
+                    android:textAllCaps="false"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-2dp"
+                    app:backgroundTint="@color/secondary_color"
+                    android:background="@drawable/ic_baseline_add_circle_24"
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/rlRelationship"
+                android:background="#384651"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRelationshipTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlRelationship"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="32dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
         </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
 
 

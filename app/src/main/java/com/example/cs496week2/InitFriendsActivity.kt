@@ -1,5 +1,6 @@
 package com.example.cs496week2
 
+import android.R
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
@@ -8,8 +9,10 @@ import android.transition.Slide
 import android.util.Log
 import android.view.Gravity
 import android.view.Window
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cs496week2.databinding.ActivityInitFriendsBinding
 import com.example.cs496week2.interfaces.GetUserAPI
@@ -19,6 +22,7 @@ import com.example.cs496week2.objects.MyProfile
 import com.example.cs496week2.objects.RetrofitHelper
 import com.example.cs496week2.ui.home.ItemAdapter
 import com.example.cs496week2.ui.home.ItemModal
+import com.example.cs496week2.ui.home.TagAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -40,20 +44,101 @@ class InitFriendsActivity : AppCompatActivity() {
                 exitTransition = Slide(Gravity.START)
             }
         }
-
         super.onCreate(savedInstanceState)
 
         binding = ActivityInitFriendsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var itemModal = ItemModal(
+            MyProfile.userID, MyProfile.name, MyProfile.phone, MyProfile.email,
+            ArrayList(MyProfile.work), ArrayList(MyProfile.area),
+            ArrayList(MyProfile.hobby), arrayListOf(MyProfile.relationship),
+            MyProfile.photoSrc, ArrayList())
+        var workTagAdapter: TagAdapter? = null
+        var areaTagAdapter: TagAdapter? = null
+        var hobbyTagAdapter: TagAdapter? = null
+        var relationshipTagAdapter: TagAdapter? = null
+
+        workTagAdapter = TagAdapter()
+        binding.rvWorkTag.setHasFixedSize(true)
+        workTagAdapter!!.setData(itemModal!!.workTagList)
+        binding.rvWorkTag.adapter = workTagAdapter;
+
+        areaTagAdapter = TagAdapter()
+        binding.rvAreaTag.setHasFixedSize(true)
+        areaTagAdapter!!.setData(itemModal!!.areaTagList)
+        binding.rvAreaTag.adapter = areaTagAdapter;
+
+        hobbyTagAdapter = TagAdapter()
+        binding.rvHobbyTag.setHasFixedSize(true)
+        hobbyTagAdapter!!.setData(itemModal!!.hobbyTagList)
+        binding.rvHobbyTag.adapter = hobbyTagAdapter;
+
+        relationshipTagAdapter = TagAdapter()
+        binding.rvRelationshipTag.setHasFixedSize(true)
+        relationshipTagAdapter!!.setData(itemModal!!.relationshipTagList)
+        binding.rvRelationshipTag.adapter = relationshipTagAdapter;
+
+        binding.actvWork.setAdapter(
+            ArrayAdapter(
+                this,
+                R.layout.simple_dropdown_item_1line, itemModal!!.workTagList
+            )
+        )
+
+        binding.actvArea.setAdapter(
+            ArrayAdapter(
+                this,
+                R.layout.simple_dropdown_item_1line, itemModal!!.areaTagList
+            )
+        )
+
+        binding.actvHobby.setAdapter(
+            ArrayAdapter(
+                this,
+                R.layout.simple_dropdown_item_1line, itemModal!!.hobbyTagList
+            )
+        )
+
+        binding.actvRelationship.setAdapter(
+            ArrayAdapter(
+                this,
+                R.layout.simple_dropdown_item_1line, itemModal!!.relationshipTagList
+            )
+        )
+
+        // set on-click listener for adding tags //WORK
+        binding.btnWork.setOnClickListener {
+            val newWork = binding.actvWork.text;
+            itemModal!!.workTagList.add(newWork.toString())
+            binding.actvWork.setText("")
+            binding.rvWorkTag.adapter!!.notifyDataSetChanged()
+        }
+        binding.btnArea.setOnClickListener {
+            val newArea = binding.actvArea.text;
+            itemModal!!.areaTagList.add(newArea.toString())
+            binding.actvArea.setText("")
+            binding.rvAreaTag.adapter!!.notifyDataSetChanged()
+        }
+        binding.btnHobby.setOnClickListener {
+            val newHobby = binding.actvHobby.text;
+            itemModal!!.hobbyTagList.add(newHobby.toString())
+            binding.actvHobby.setText("")
+            binding.rvHobbyTag.adapter!!.notifyDataSetChanged()
+        }
+        binding.btnRelationship.setOnClickListener {
+            val newWork = binding.actvRelationship.text;
+            itemModal!!.relationshipTagList.add(newWork.toString())
+            binding.actvRelationship.setText("")
+            binding.rvRelationshipTag.adapter!!.notifyDataSetChanged()
+        }
+
         // set on-click listener after entering all data
         binding.btnStartApp.setOnClickListener {
-//            val name = binding.etName.text;
-//            val phone = binding.etPhone.text;
-//            val email = binding.etEmail.text;
-//            Toast.makeText(this@InitProfileActivity, name, Toast.LENGTH_LONG).show()
-//            Toast.makeText(this@InitProfileActivity, "Your profile is set.", Toast.LENGTH_SHORT).show()
-            // send data
+            MyProfile.work = itemModal.workTagList
+            MyProfile.hobby = itemModal.hobbyTagList
+            MyProfile.area = itemModal.areaTagList
+            MyProfile.relationship = itemModal.relationshipTagList.get(0)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
 
@@ -67,7 +152,7 @@ class InitFriendsActivity : AppCompatActivity() {
                         Property(
                             MyProfile.userID, MyProfile.name, MyProfile.phone, MyProfile.email, MyProfile.photoSrc
                         ),
-                        MyProfile.work, MyProfile.hobby, MyProfile.area, ""
+                        MyProfile.work, MyProfile.hobby, MyProfile.area, MyProfile.relationship
                     )
                 )
                 if (result != null) {
