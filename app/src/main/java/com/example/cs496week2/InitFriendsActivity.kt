@@ -67,7 +67,7 @@ class InitFriendsActivity : AppCompatActivity() {
                         Property(
                             MyProfile.userID, MyProfile.name, MyProfile.phone, MyProfile.email, MyProfile.photoSrc
                         ),
-                        listOf(), listOf(), listOf(), ""
+                        MyProfile.work, MyProfile.hobby, MyProfile.area, ""
                     )
                 )
                 if (result != null) {

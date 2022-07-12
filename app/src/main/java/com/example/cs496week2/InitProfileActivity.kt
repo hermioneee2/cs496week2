@@ -83,10 +83,15 @@ class InitProfileActivity : AppCompatActivity() {
 
         // set on-click listener after entering all data
         binding.btnSetMyProfile.setOnClickListener {
-            val name = binding.etName.text;
-            val phone = binding.etPhone.text;
-            val email = binding.etEmail.text;
-            Toast.makeText(this@InitProfileActivity, name, Toast.LENGTH_LONG).show()
+            MyProfile.name = binding.etName.text.toString()
+            MyProfile.phone = binding.etPhone.text.toString()
+            MyProfile.email = binding.etEmail.text.toString()
+            MyProfile.work = listOf(
+                findViewById<TextView>(resources.getIdentifier("tvWorkTag1", "id", packageName)).text.toString(),
+                findViewById<TextView>(resources.getIdentifier("tvWorkTag2", "id", packageName)).text.toString(),
+                findViewById<TextView>(resources.getIdentifier("tvWorkTag3", "id", packageName)).text.toString()
+            )
+            Toast.makeText(this@InitProfileActivity, MyProfile.name, Toast.LENGTH_LONG).show()
             Toast.makeText(this@InitProfileActivity, "Your profile is set.", Toast.LENGTH_SHORT)
                 .show()
             // send data

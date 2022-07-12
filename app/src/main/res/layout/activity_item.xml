@@ -139,12 +139,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="28dp"
                 android:layout_marginLeft="30dp"
-                android:fontFamily="@font/albertsanslight"
-                android:text="010-1234-5678"
+                android:layout_toEndOf="@+id/tvPhoneTitle"
                 android:ems="9"
+                android:fontFamily="@font/albertsanslight"
                 android:inputType="phone"
                 android:selectAllOnFocus="true"
+                android:text="010-1234-5678"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -189,9 +191,9 @@
                 android:layout_toRightOf="@id/tvEmailTitle"
                 android:ems="9"
                 android:fontFamily="@font/albertsanslight"
-                android:text="youremail@email.com"
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true"
+                android:text="youremail@email.com"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
         </RelativeLayout>

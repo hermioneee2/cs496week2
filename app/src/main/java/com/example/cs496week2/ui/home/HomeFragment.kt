@@ -36,7 +36,7 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
     )
 
     //한다리+한다리건너 지인 정보 모두 리턴
-    var itemListModal = arrayOf(
+    var itemListModal = mutableListOf<ItemModal>(
         ItemModal("11", "이혜림", "010-1463-5364", "hermioneee2@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
         ItemModal("12", "윤태영", "010-1233-4522", "tythankyou@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
         ItemModal("13", "윤하나", "010-1735-6275", "lollipop@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
@@ -71,8 +71,21 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
                 result.body()!!.forEach{ i ->
                     Log.d("Taeyoung", i.properties.name)
                     val node = getUserAPI.getUser(id = i.properties.userID)
+                    val workTagList: ArrayList<String> = ArrayList(node.body()!!.work)
+                    val areaTagList: ArrayList<String> = ArrayList(node.body()!!.area)
+                    val hobbyTagList: ArrayList<String> = ArrayList(node.body()!!.hobby)
+                    val relationshipTagList: ArrayList<String> =
+                        ArrayList(listOf<String>(node.body()!!.relationship))
+                    val tagList = ArrayList<String>()
+                    tagList.addAll(workTagList)
+                    tagList.addAll(areaTagList)
+                    tagList.addAll(hobbyTagList)
+                    tagList.addAll(relationshipTagList)
                     itemListModal.add(ItemModal(
-                        i.properties.photoSrc, i.properties.name, ArrayList(node.body()!!.work)
+                        i.properties.userID, i.properties.name,
+                        i.properties.phone, i.properties.email,
+                        workTagList, areaTagList, hobbyTagList, relationshipTagList,
+                        i.properties.photoSrc, tagList
                     ))}
             }
 

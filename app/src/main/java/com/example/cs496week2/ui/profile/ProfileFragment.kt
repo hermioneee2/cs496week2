@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.cs496week2.R
 import com.example.cs496week2.databinding.ActivityItemBinding
 import com.example.cs496week2.databinding.FragmentProfileBinding
+import com.example.cs496week2.objects.MyProfile
 import com.example.cs496week2.ui.home.ItemModal
 import com.example.cs496week2.ui.home.TagAdapter
 import kotlinx.android.synthetic.main.activity_item.*
@@ -41,12 +42,11 @@ class ProfileFragment : Fragment() {
         _binding = ActivityItemBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //TODO: Call my info from MYPROFILE
-        var dummyTagList = arrayListOf(
-            "삼성전자", "LG전자", "네이버"
-        )
-        var itemModal = ItemModal("11", "이혜림", "010-1463-5364", "hermioneee2@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList)
-
+        var itemModal = ItemModal(
+            MyProfile.userID, MyProfile.name, MyProfile.phone, MyProfile.email,
+            ArrayList(MyProfile.work), ArrayList(MyProfile.area),
+            ArrayList(MyProfile.hobby), arrayListOf(MyProfile.relationship),
+            MyProfile.photoSrc, ArrayList())
 
         binding.tvName.text = itemModal.name
         binding.tvEmail.text = itemModal.email
