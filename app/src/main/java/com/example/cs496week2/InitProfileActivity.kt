@@ -23,10 +23,6 @@ import kotlinx.coroutines.launch
 class InitProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInitProfileBinding
 
-    //    private val list: MutableList<String>? = null
-    private val list: MutableList<String> = mutableListOf()
-    private var workCnt: Int = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,53 +42,11 @@ class InitProfileActivity : AppCompatActivity() {
         val imageStr = MyProfile.photoSrc
         Glide.with(this).load(imageStr).into(binding.ivProfilePic)
 
-        // 리스트에 검색될 데이터(단어)를 추가한다.
-        settingList();
-
-        binding.actvWork.setAdapter(
-            ArrayAdapter(
-                this,
-                R.layout.simple_dropdown_item_1line, list as ArrayList<String>
-            )
-        )
-
-        // set on-click listener for adding tags //WORK
-        binding.btnWork.setOnClickListener {
-            val newWork = binding.actvWork.text;
-            workCnt++
-
-            if (workCnt <= 3) {
-                val tagName = "tvWorkTag$workCnt"
-                val tagId: Int =
-                    resources.getIdentifier(tagName, "id", packageName)
-                val tag = findViewById<TextView>(tagId)
-
-                tag.text = newWork
-                tag.visibility = View.VISIBLE
-            } else {
-                Toast.makeText(
-                    this@InitProfileActivity,
-                    "Maximum 3 tags can be added.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            binding.actvWork.setText("")
-        }
-
-
         // set on-click listener after entering all data
         binding.btnSetMyProfile.setOnClickListener {
             MyProfile.name = binding.etName.text.toString()
             MyProfile.phone = binding.etPhone.text.toString()
             MyProfile.email = binding.etEmail.text.toString()
-            val workList = mutableListOf<String>()
-            for (i in 1..workCnt) {
-                workList.add(findViewById<TextView>(
-                    resources.getIdentifier("tvWorkTag" + i, "id", packageName)
-                ).text.toString())
-            }
-            MyProfile.work = workList.toList()
             Toast.makeText(this@InitProfileActivity, MyProfile.name, Toast.LENGTH_LONG).show()
             Toast.makeText(this@InitProfileActivity, "Your profile is set.", Toast.LENGTH_SHORT)
                 .show()
@@ -104,17 +58,5 @@ class InitProfileActivity : AppCompatActivity() {
             )
             finish()
         }
-    }
-
-    private fun settingList() {
-        val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
-        GlobalScope.launch{
-            val result = getUserAPI.getTags(param2 = "Work")
-            if (result != null) {
-                list.addAll(result.body()!!.toList())
-                Log.d("ayush: ", result.body().toString())
-            }
-        }
-        list.addAll(listOf("삼성전자", "LG전자", "네이버", "카카오", "크래프톤"))
     }
 }

@@ -31,7 +31,7 @@ import kotlinx.coroutines.withContext
 class InitFriendsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInitFriendsBinding
     //    private val list: MutableList<String>? = null
-    private val list: MutableList<String> = mutableListOf()
+    private var list: MutableList<String> = mutableListOf()
     private var workCnt: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,31 +79,32 @@ class InitFriendsActivity : AppCompatActivity() {
         relationshipTagAdapter!!.setData(itemModal!!.relationshipTagList)
         binding.rvRelationshipTag.adapter = relationshipTagAdapter;
 
+        settingList("Work")
+        settingList("Area")
+        settingList("Hobby")
         binding.actvWork.setAdapter(
             ArrayAdapter(
                 this,
-                R.layout.simple_dropdown_item_1line, itemModal!!.workTagList
+                R.layout.simple_dropdown_item_1line, list
             )
         )
-
         binding.actvArea.setAdapter(
             ArrayAdapter(
                 this,
-                R.layout.simple_dropdown_item_1line, itemModal!!.areaTagList
+                R.layout.simple_dropdown_item_1line, list
             )
         )
-
         binding.actvHobby.setAdapter(
             ArrayAdapter(
                 this,
-                R.layout.simple_dropdown_item_1line, itemModal!!.hobbyTagList
+                R.layout.simple_dropdown_item_1line, list
             )
         )
 
         binding.actvRelationship.setAdapter(
             ArrayAdapter(
                 this,
-                R.layout.simple_dropdown_item_1line, itemModal!!.relationshipTagList
+                R.layout.simple_dropdown_item_1line, list
             )
         )
 
@@ -159,6 +160,17 @@ class InitFriendsActivity : AppCompatActivity() {
                     Log.d("Taeyoung", result.body()!!.toString())
                 }
                 finish()
+            }
+        }
+    }
+
+    private fun settingList(param : String) {
+        val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
+        GlobalScope.launch{
+            val result = getUserAPI.getTags(param2 = param)
+            if (result != null) {
+                list.addAll(result.body()!!.toList())
+                Log.d("ayush: ", result.body().toString())
             }
         }
     }

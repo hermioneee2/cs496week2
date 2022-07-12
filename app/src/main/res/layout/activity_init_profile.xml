@@ -30,8 +30,8 @@
         android:textColorHint="@color/white_disable"
         android:textColor="@color/secondary_color"
         android:completionThreshold="1"
-        android:text="1. SET PROFILE"
-        android:textSize="20dp"
+        android:text="1. SET BASIC PROFILE"
+        android:textSize="17dp"
         android:fontFamily="@font/albertsansmedium"
         />
 
@@ -192,111 +192,6 @@
                     android:selectAllOnFocus="true"
                     />
             </RelativeLayout>
-
-            <!--work tags-->
-            <RelativeLayout
-                android:id="@+id/rlWork"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rlEmail"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                >
-
-                <ImageView
-                    android:id="@+id/ivWorkIcon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_baseline_business_center_24"
-                    app:tint="@color/white"
-                    />
-
-                <AutoCompleteTextView
-                    android:id="@+id/actvWork"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="100dp"
-                    android:gravity="center_vertical"
-                    android:textColorHint="@color/white_disable"
-                    android:textColor="@color/white"
-                    android:hint="나의 직장 추가"
-                    android:background="@color/primary_color"
-                    android:completionThreshold="1"
-                    app:theme="@style/AppSearchView" />
-
-                <Button
-                    android:id="@+id/btnWork"
-                    android:fontFamily="@font/albertsansmedium"
-                    android:textAllCaps="false"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="70dp"
-                    android:layout_marginTop="-2dp"
-                    app:backgroundTint="@color/secondary_color"
-                    android:background="@drawable/ic_baseline_add_circle_24"
-                    />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rlWorkTag"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rlWork"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                >
-
-                <TextView
-                    android:id="@+id/tvWorkTag1"
-                    android:layout_width="65dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="30dp"
-                    android:gravity="center"
-                    android:textColorHint="@color/white_disable"
-                    android:textColor="@color/primary_color"
-                    android:text="삼성"
-                    android:background="@drawable/rounded_corner"
-                    android:completionThreshold="1"
-                    app:theme="@style/AppSearchView"
-                    android:visibility="gone"/>
-
-                <TextView
-                    android:id="@+id/tvWorkTag2"
-                    android:layout_width="65dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_toRightOf="@id/tvWorkTag1"
-                    android:gravity="center"
-                    android:textColorHint="@color/white_disable"
-                    android:textColor="@color/primary_color"
-                    android:text="삼성"
-                    android:background="@drawable/rounded_corner"
-                    android:completionThreshold="1"
-                    app:theme="@style/AppSearchView"
-                    android:visibility="gone"/>
-
-                <TextView
-                    android:id="@+id/tvWorkTag3"
-                    android:layout_width="70dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_toRightOf="@id/tvWorkTag2"
-                    android:gravity="center"
-                    android:textColorHint="@color/white_disable"
-                    android:textColor="@color/primary_color"
-                    android:completionThreshold="1"
-                    android:text="삼성"
-                    android:background="@drawable/rounded_corner"
-                    app:theme="@style/AppSearchView"
-                    android:visibility="gone"/>
-
-            </RelativeLayout>
-
-
 
             <!--submit-->
             <Button
