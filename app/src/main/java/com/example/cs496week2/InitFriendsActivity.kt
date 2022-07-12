@@ -52,7 +52,7 @@ class InitFriendsActivity : AppCompatActivity() {
         var itemModal = ItemModal(
             MyProfile.userID, MyProfile.name, MyProfile.phone, MyProfile.email,
             ArrayList(MyProfile.work), ArrayList(MyProfile.area),
-            ArrayList(MyProfile.hobby), arrayListOf(MyProfile.relationship),
+            ArrayList(MyProfile.hobby), ArrayList(),
             MyProfile.photoSrc, ArrayList())
         var workTagAdapter: TagAdapter? = null
         var areaTagAdapter: TagAdapter? = null

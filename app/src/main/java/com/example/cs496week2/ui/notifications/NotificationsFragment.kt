@@ -34,38 +34,9 @@ class NotificationsFragment : Fragment() {
         "삼성전자", "LG전자", "네이버"
     )
 
-    var itemListModal = arrayListOf(
-        ItemModal(
-            "11",
-            "이혜림",
-            "010-1463-5364",
-            "hermioneee2@gmail.com",
-            dummyTagList,
-            dummyTagList,
-            dummyTagList,
-            dummyTagList,
-            "https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg",
-            dummyTagList
-        ),
-        ItemModal(
-            "12",
-            "윤태영",
-            "010-1233-4522",
-            "tythankyou@gmail.com",
-            dummyTagList,
-            dummyTagList,
-            dummyTagList,
-            dummyTagList,
-            "https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg",
-            dummyTagList
-        ),
-    )
+    var itemListModal = ArrayList<ItemModal>()
 
-    var itemModalList = arrayListOf(
-        itemListModal,
-        itemListModal,
-        itemListModal
-    )
+    var itemModalList = ArrayList<ArrayList<ItemModal>>()
 
     var notificationAdapter: NotificationAdapter? = null;
 

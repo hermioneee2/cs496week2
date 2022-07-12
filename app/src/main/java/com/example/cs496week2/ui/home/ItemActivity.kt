@@ -3,14 +3,20 @@ package com.example.cs496week2.ui.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.cs496week2.databinding.ActivityItemBinding
+import com.example.cs496week2.interfaces.GetUserAPI
+import com.example.cs496week2.objects.MyProfile
+import com.example.cs496week2.objects.RetrofitHelper
 import kotlinx.android.synthetic.main.activity_item.*
 import kotlinx.android.synthetic.main.row_items.*
 import kotlinx.android.synthetic.main.row_items.view.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ItemActivity : AppCompatActivity() {
     private lateinit var binding: ActivityItemBinding
@@ -71,7 +77,17 @@ class ItemActivity : AppCompatActivity() {
         // set on-click listener for direct message
         binding.btnOnBehalfOf.setOnClickListener {
             // notify the bridge person
-            //
+
+            val getUserAPI = RetrofitHelper.getInstance().create(GetUserAPI::class.java)
+            GlobalScope.launch {
+                val result = getUserAPI.getUserList(
+                    param1 = MyProfile.userID,
+                    param2 = itemModal!!.userID,
+                    body = listOf()
+                )
+                Log.d("ItemActivity set temp link: ", result.body().toString())
+
+            }
             Toast.makeText(this@ItemActivity, "이어주는 연결 다리에게 연락이 갔어요!", Toast.LENGTH_LONG).show()
         }
 

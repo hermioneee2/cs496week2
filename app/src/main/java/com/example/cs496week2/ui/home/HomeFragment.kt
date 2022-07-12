@@ -23,7 +23,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.ClickedItem  {
+class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.ClickedItem {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -31,22 +31,22 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
     // onDestroyView.
     private val binding get() = _binding!!
 
-    var dummyTagList = arrayListOf(
-        "삼성전자", "LG전자", "네이버"
-    )
+//    var dummyTagList = arrayListOf(
+//        "삼성전자", "LG전자", "네이버"
+//    )
 
     //한다리+한다리건너 지인 정보 모두 리턴
     var itemListModal = mutableListOf<ItemModal>(
-        ItemModal("11", "이혜림", "010-1463-5364", "hermioneee2@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
-        ItemModal("12", "윤태영", "010-1233-4522", "tythankyou@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
-        ItemModal("13", "윤하나", "010-1735-6275", "lollipop@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
-        ItemModal("11", "김민수", "010-1463-5364", "minsu@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
-        ItemModal("12", "이하연", "010-1233-4522", "hiyeon@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
-        ItemModal("13", "박태균", "010-1735-6275", "tk4233@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+//        ItemModal("11", "이혜림", "010-1463-5364", "hermioneee2@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+//        ItemModal("12", "윤태영", "010-1233-4522", "tythankyou@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+//        ItemModal("13", "윤하나", "010-1735-6275", "lollipop@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+//        ItemModal("11", "김민수", "010-1463-5364", "minsu@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+//        ItemModal("12", "이하연", "010-1233-4522", "hiyeon@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+//        ItemModal("13", "박태균", "010-1735-6275", "tk4233@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
+//        ItemModal("13", "테스트", "010-5830-4382", "tk4233@gmail.com", dummyTagList, dummyTagList, dummyTagList, dummyTagList,"https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", dummyTagList),
 //        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Apple", dummyTagList),
 //        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Banana", dummyTagList),
 //        ItemModal("https://k.kakaocdn.net/dn/bER0sf/btry33hyOgb/Y2R8LMaVEhbgcvq5KCK110/img_110x110.jpg", "Orange", dummyTagList)
-
     )
 
     var itemModalList = ArrayList<ItemModal>();
@@ -55,9 +55,9 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
     var itemTagAdapter: ItemTagAdapter? = null;
 
     //DUMMY FOR TAGS
-    var itemTagModalList = arrayListOf(
-        ItemTagModal("삼성전자", itemListModal),
-        ItemTagModal("LG", itemListModal)
+    var itemTagModalList = arrayListOf<ItemTagModal>(
+//        ItemTagModal("삼성전자", itemListModal),
+//        ItemTagModal("LG", itemListModal)
     )
 
     override fun onCreateView(
@@ -99,6 +99,13 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
                 }
             }
 
+            MyProfile.work.plus(MyProfile.area)
+                .plus(MyProfile.hobby).plus(listOf(MyProfile.relationship)).forEach { tag ->
+                    var tagModal = itemListModal.filter { modal -> modal.tagList.contains(tag) }
+                    itemTagModalList.add(ItemTagModal(tag, tagModal.toMutableList()))
+                    Log.d("Taeyoung HomeFragment", tag)
+                }
+
             for (item in itemListModal) {
                 itemModalList.add(item)
             }
@@ -110,6 +117,7 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
 
                 itemAdapter = ItemAdapter(this@HomeFragment);
                 itemAdapter!!.setData(itemModalList)
+
                 //SEARCH RESULT
                 binding.rvSearchResult.layoutManager = LinearLayoutManager(context);
                 binding.rvSearchResult.setHasFixedSize(true)
@@ -168,14 +176,14 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.C
         var searchView = menuItem.actionView as SearchView;
 
         searchView.maxWidth = Int.MAX_VALUE
-        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return true
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
 //                Log.e("TAG", "=> $p0")
-                if (p0 == null || p0.isEmpty()){
+                if (p0 == null || p0.isEmpty()) {
                     _binding!!.rvSearchResult.visibility = View.GONE
                     _binding!!.rvDefault.visibility = View.VISIBLE
                     _binding!!.explanation.visibility = View.VISIBLE

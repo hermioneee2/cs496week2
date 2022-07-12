@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cs496week2.R
 import kotlinx.android.synthetic.main.activity_item.view.*
-import kotlinx.android.synthetic.main.row_items_tag.view.tvTag
-import kotlinx.android.synthetic.main.row_items_tag.view.rvProfile
+import kotlinx.android.synthetic.main.row_items_tag.view.*
 
 class ItemTagAdapter(    var clickedItem: ProfileCircleAdapter.ClickedItem
 ): RecyclerView.Adapter<ItemTagAdapter.ItemTagAdapterVH>(){
@@ -35,6 +34,9 @@ class ItemTagAdapter(    var clickedItem: ProfileCircleAdapter.ClickedItem
 
     override fun onBindViewHolder(holder: ItemTagAdapterVH, position: Int) {
         var itemTagModal = itemTagModalList[position]
+        if (itemTagModal.profileList.isEmpty()) {
+            holder.tvNoSearch.visibility = View.VISIBLE
+        }
 
 //        Glide.with(holder.ivProfilePic).load(itemModal.photoSrc).into(holder.ivProfilePic.ivProfilePic)
 
@@ -51,6 +53,7 @@ class ItemTagAdapter(    var clickedItem: ProfileCircleAdapter.ClickedItem
     }
 
     class ItemTagAdapterVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var tvNoSearch = itemView.tvNoSearch
         var tvTag = itemView.tvTag
         var rvProfile = itemView.rvProfile
     }
