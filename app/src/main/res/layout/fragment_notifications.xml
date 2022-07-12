@@ -15,11 +15,22 @@
         android:background="@color/primary_color"
         android:orientation="vertical"
         >
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="내가 연결해주기를 기다리고 있어요"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:fontFamily="@font/albertsansmedium"-->
+<!--            android:layout_margin="15dp"-->
+<!--            />-->
+
         <TextView
+            android:id="@+id/explanation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내가 연결해주기를 기다리고 있어요"
-            android:textColor="@color/white"
+            android:paddingLeft="10dp"
+            android:text="내가 연결해주기를 기다리는 친구 목록"
+            android:textColor="@color/white_disable"
             android:fontFamily="@font/albertsansmedium"
             android:layout_margin="15dp"
             />

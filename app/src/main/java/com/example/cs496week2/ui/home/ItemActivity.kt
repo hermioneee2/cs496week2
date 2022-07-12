@@ -69,9 +69,9 @@ class ItemActivity : AppCompatActivity() {
         // set on-click listener for direct message
         binding.btnDirect.setOnClickListener {
             // send SMS directly
-//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + itemModal!!.phone))
-//            intent.putExtra("sms_body", "안녕하세요 " + itemModal!!.name + "님, '한다리건너'를 통해 알게 되어 연락 드립니다.")
-//            startActivity(intent)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + itemModal!!.phone))
+            intent.putExtra("sms_body", "안녕하세요 " + itemModal!!.name + "님, '한다리건너'를 통해 알게 되어 연락 드립니다.")
+            startActivity(intent)
         }
 
         // set on-click listener for direct message
