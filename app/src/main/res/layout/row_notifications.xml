@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnConnect"
                 android:scaleType="centerCrop"
-                android:text="CONNECT"
+                android:text="다리 잇기"
                 android:textSize="10dp"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/white" />
