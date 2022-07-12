@@ -23,7 +23,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
+class HomeFragment : Fragment(), ItemAdapter.ClickedItem, ProfileCircleAdapter.ClickedItem  {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -52,6 +52,13 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
     var itemModalList = ArrayList<ItemModal>();
 
     var itemAdapter: ItemAdapter? = null;
+    var itemTagAdapter: ItemTagAdapter? = null;
+
+    //DUMMY FOR TAGS
+    var itemTagModalList = arrayListOf(
+        ItemTagModal("삼성전자", itemListModal),
+        ItemTagModal("LG", itemListModal)
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -100,14 +107,25 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
 
                 itemAdapter = ItemAdapter(this@HomeFragment);
                 itemAdapter!!.setData(itemModalList)
+        //SEARCH RESULT
+        binding.rvSearchResult.layoutManager = LinearLayoutManager(context);
+        binding.rvSearchResult.setHasFixedSize(true)
 
-//        Log.d("itemModalList.size", itemModalList.size.toString())
+        itemAdapter = ItemAdapter(this);
+        itemAdapter!!.setData(itemModalList)
 
-                binding.recyclerView.adapter = itemAdapter
+        binding.rvSearchResult.adapter = itemAdapter
 
-                setHasOptionsMenu(true);
-            }
-        }
+        //DEFAULT BY TAG
+        binding.rvDefault.layoutManager = LinearLayoutManager(context);
+        binding.rvDefault.setHasFixedSize(true)
+
+        itemTagAdapter = ItemTagAdapter(this);
+        itemTagAdapter!!.setData(itemTagModalList)
+
+        binding.rvDefault.adapter = itemTagAdapter
+
+        setHasOptionsMenu(true);
 
         return root
     }
@@ -126,8 +144,14 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
         val intent = Intent(activity, ItemActivity::class.java)
         intent.putExtra("data", itemModal1)
         startActivity(intent)
+    }
 
+    override fun clickedItem2(itemProfile: ItemModal) {
+        var itemModal1 = itemProfile;
 
+        val intent = Intent(activity, ItemActivity::class.java)
+        intent.putExtra("data", itemModal1)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -147,13 +171,14 @@ class HomeFragment : Fragment(), ItemAdapter.ClickedItem {
             override fun onQueryTextChange(p0: String?): Boolean {
 //                Log.e("TAG", "=> $p0")
                 if (p0 == null || p0.isEmpty()){
-//                    _binding!!.tvHome.text = "empty"
-                    _binding!!.recyclerView.visibility = View.GONE
+                    _binding!!.rvSearchResult.visibility = View.GONE
+                    _binding!!.rvDefault.visibility = View.VISIBLE
+                    _binding!!.explanation.visibility = View.VISIBLE
 
                 } else {
-//                    _binding!!.tvHome.text = "something"
-                    _binding!!.recyclerView.visibility = View.VISIBLE
-//                    itemAdapter!!.filter.filter(p0);
+                    _binding!!.rvSearchResult.visibility = View.VISIBLE
+                    _binding!!.rvDefault.visibility = View.GONE
+                    _binding!!.explanation.visibility = View.GONE
                 }
                 itemAdapter!!.filter.filter(p0);
 

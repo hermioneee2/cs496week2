@@ -5,11 +5,8 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
     app:cardBackgroundColor="@color/tertiary_color"
-    app:cardCornerRadius="15dp"
     >
 
     <RelativeLayout
@@ -19,18 +16,17 @@
         >
 
         <RelativeLayout
+            android:id="@+id/iconWrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/iconWrapper"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            >
+            android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/rlProfile0"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rlProfile0">
+                android:layout_height="wrap_content">
 
                 <!--        <ImageView-->
                 <!--            android:layout_width="70dp"-->
@@ -44,33 +40,31 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     app:cardCornerRadius="15dp"
-                    app:cardElevation="20dp"
-                    >
+                    app:cardElevation="20dp">
 
                     <ImageView
                         android:id="@+id/ivProfilePic0"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        />
+                        android:scaleType="centerCrop" />
 
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rlProfile1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rlProfile1"
                 android:layout_centerInParent="true">
 
                 <ImageView
-                    android:src="@drawable/dash_arrow"
                     android:id="@+id/arrow"
-                    android:layerType="software"
                     android:layout_width="50dp"
                     android:layout_height="1.5dp"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp"
+                    android:layerType="software"
+                    android:src="@drawable/dash_arrow" />
 
                 <!--profile pic-->
                 <androidx.cardview.widget.CardView
@@ -96,11 +90,11 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rlProfile2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rlProfile2"
-                android:layout_toRightOf="@id/rlProfile0"
-                android:layout_marginLeft="50dp">
+                android:layout_marginLeft="50dp"
+                android:layout_toRightOf="@id/rlProfile0">
 
                 <!--profile pic-->
                 <androidx.cardview.widget.CardView
@@ -108,20 +102,17 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     app:cardCornerRadius="15dp"
-                    app:cardElevation="20dp"
-                    >
+                    app:cardElevation="20dp">
 
                     <ImageView
                         android:id="@+id/ivProfilePic1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        />
+                        android:scaleType="centerCrop" />
 
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
-
 
 
         </RelativeLayout>
@@ -139,6 +130,40 @@
             android:text="Name"
             android:textColor="@color/white"
             android:textSize="13dp" />
+
+
+        <RelativeLayout
+            android:id="@+id/rlConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp">
+
+
+            <Button
+                android:id="@+id/btnWork"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_baseline_send_24"
+                android:fontFamily="@font/albertsansmedium"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/secondary_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnWork"
+                android:scaleType="centerCrop"
+                android:text="CONNECT"
+                android:textSize="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
