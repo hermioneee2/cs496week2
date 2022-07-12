@@ -9,7 +9,7 @@ import com.example.cs496week2.R
 import com.example.cs496week2.ui.home.ItemAdapter
 import com.example.cs496week2.ui.home.ItemModal
 import com.example.cs496week2.ui.home.TagAdapter
-import kotlinx.android.synthetic.main.row_items.view.*
+import kotlinx.android.synthetic.main.row_notifications.view.*
 
 class NotificationAdapter(): RecyclerView.Adapter<NotificationAdapter.NotificationAdapterVH>() {
     var itemModalList = ArrayList<ArrayList<ItemModal>>();
@@ -31,6 +31,12 @@ class NotificationAdapter(): RecyclerView.Adapter<NotificationAdapter.Notificati
 
         Glide.with(holder.ivProfilePic0).load(threeItemModal[0].photoSrc).into(holder.ivProfilePic0.ivProfilePic0)
         holder.name0.text = threeItemModal[0].name
+
+        Glide.with(holder.ivProfilePic1).load(threeItemModal[0].photoSrc).into(holder.ivProfilePic0.ivProfilePic0)
+        holder.name1.text = threeItemModal[0].name
+
+        Glide.with(holder.ivProfilePic2).load(threeItemModal[0].photoSrc).into(holder.ivProfilePic0.ivProfilePic0)
+        holder.name2.text = threeItemModal[0].name
     }
 
     override fun getItemCount(): Int {

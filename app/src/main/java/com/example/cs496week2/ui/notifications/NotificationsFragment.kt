@@ -52,10 +52,10 @@ class NotificationsFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(context);
         binding.recyclerView.setHasFixedSize(true)
 
-        notificationAdapter = NotificationAdapter(this);
+        notificationAdapter = NotificationAdapter();
         notificationAdapter!!.setData(itemModalList)
 
-        binding.recyclerView.adapter = itemAdapter
+        binding.recyclerView.adapter = notificationAdapter
 
 
         return root
