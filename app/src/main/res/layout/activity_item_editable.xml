@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.ItemActivity"
-    android:background="@color/primary_color"
-    android:id="@+id/constraintContainer">
+    android:background="@color/primary_color">
 
 <!--    <RelativeLayout-->
 <!--        android:layout_width="match_parent"-->
@@ -55,10 +54,9 @@
             android:layout_marginRight="13dp"
             android:backgroundTint="#00ffffff"
             android:fontFamily="@font/albertsanslight"
-            android:text="Edit Profile"
+            android:text="Confirm Edit"
             android:textAllCaps="false"
             android:textColor="@color/tertiary_color"
-            android:visibility="gone"
             />
 
         <!--profile pic-->
@@ -89,27 +87,27 @@
             android:background="@color/secondary_color" />
 
         <!--text view for displaying user name-->
-        <TextView
-            android:id="@+id/tvName"
+        <EditText
+            android:id="@+id/etName"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="107dp"
             android:layout_toRightOf="@id/cvProfilePic"
-            android:background="@color/tertiary_color"
             android:fontFamily="@font/albertsans"
-            android:gravity="left"
+            android:layout_marginTop="107dp"
+            android:layout_marginLeft="6dp"
             android:padding="8dp"
-            android:text="이혜림"
+            android:gravity="left"
             android:textColor="@color/white"
-            android:textSize="21sp" />
+            android:textSize="21sp"
+            android:text="이혜림"
+            android:background="@color/tertiary_color" />
 
         <!--phone-->
         <RelativeLayout
             android:id="@+id/rlPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvName"
+            android:layout_below="@id/etName"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="18dp"
             android:layout_marginRight="30dp">
@@ -133,15 +131,16 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/tvPhone"
+            <EditText
+                android:id="@+id/etPhone"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="30dp"
+                android:background="@color/primary_color"
                 android:fontFamily="@font/albertsanslight"
-                android:text="010-1234-5678"
+                android:hint="010-1234-5678"
                 android:ems="9"
                 android:inputType="phone"
                 android:selectAllOnFocus="true"
@@ -179,17 +178,18 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/tvEmail"
+            <EditText
+                android:id="@+id/etEmail"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="30dp"
                 android:layout_toRightOf="@id/tvEmailTitle"
+                android:background="@color/primary_color"
                 android:ems="9"
                 android:fontFamily="@font/albertsanslight"
-                android:text="youremail@email.com"
+                android:hint="youremail@email.com"
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true"
                 android:textColor="@color/white"
@@ -226,6 +226,33 @@
                 android:text="Company"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/actvWork"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:textColorHint="@color/white_disable"
+                android:textColor="@color/white"
+                android:hint="나의 직장"
+                android:background="@color/primary_color"
+                android:completionThreshold="1"
+                app:theme="@style/AppSearchView" />
+
+            <Button
+                android:id="@+id/btnWork"
+                android:fontFamily="@font/albertsansmedium"
+                android:textAllCaps="false"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-2dp"
+                app:backgroundTint="@color/secondary_color"
+                android:background="@drawable/ic_baseline_add_circle_24"
+                />
         </RelativeLayout>
 
         <View
@@ -278,6 +305,33 @@
                 android:text="Expertise"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/actvArea"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:textColorHint="@color/white_disable"
+                android:textColor="@color/white"
+                android:hint="나의 전문분야"
+                android:background="@color/primary_color"
+                android:completionThreshold="1"
+                app:theme="@style/AppSearchView" />
+
+            <Button
+                android:id="@+id/btnArea"
+                android:fontFamily="@font/albertsansmedium"
+                android:textAllCaps="false"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-2dp"
+                app:backgroundTint="@color/secondary_color"
+                android:background="@drawable/ic_baseline_add_circle_24"
+                />
         </RelativeLayout>
 
         <View
@@ -331,6 +385,32 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
+            <AutoCompleteTextView
+                android:id="@+id/actvHobby"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:textColorHint="@color/white_disable"
+                android:textColor="@color/white"
+                android:hint="나의 취미"
+                android:background="@color/primary_color"
+                android:completionThreshold="1"
+                app:theme="@style/AppSearchView" />
+
+            <Button
+                android:id="@+id/btnHobby"
+                android:fontFamily="@font/albertsansmedium"
+                android:textAllCaps="false"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-2dp"
+                app:backgroundTint="@color/secondary_color"
+                android:background="@drawable/ic_baseline_add_circle_24"
+                />
         </RelativeLayout>
 
         <View
@@ -384,6 +464,32 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
+            <AutoCompleteTextView
+                android:id="@+id/actvRelationship"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:textColorHint="@color/white_disable"
+                android:textColor="@color/white"
+                android:hint="나의 연애상태"
+                android:background="@color/primary_color"
+                android:completionThreshold="1"
+                app:theme="@style/AppSearchView" />
+
+            <Button
+                android:id="@+id/btnRelationship"
+                android:fontFamily="@font/albertsansmedium"
+                android:textAllCaps="false"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-2dp"
+                app:backgroundTint="@color/secondary_color"
+                android:background="@drawable/ic_baseline_add_circle_24"
+                />
         </RelativeLayout>
 
         <View
@@ -406,43 +512,43 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <!--Buttons-->
-        <RelativeLayout
-            android:id="@+id/rlButtons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rvRelationshipTag"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:orientation="horizontal"
-            android:paddingBottom="30dp">
+<!--        &lt;!&ndash;Buttons&ndash;&gt;-->
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/rlButtons"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/rvRelationshipTag"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:layout_marginRight="30dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingBottom="30dp">-->
 
-            <Button
-                android:id="@+id/btnDirect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:backgroundTint="@color/teal_200"
-                android:fontFamily="@font/albertsansmedium"
-                android:text="직접 연락해볼게요"
-                android:textAllCaps="false"
-                android:textColor="@color/primary_color" />
+<!--            <Button-->
+<!--                android:id="@+id/btnDirect"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:backgroundTint="@color/teal_200"-->
+<!--                android:fontFamily="@font/albertsansmedium"-->
+<!--                android:text="직접 연락해볼게요"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/primary_color" />-->
 
-            <!--submit-->
-            <Button
-                android:id="@+id/btnOnBehalfOf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@id/btnDirect"
-                android:backgroundTint="@color/teal_200"
-                android:fontFamily="@font/albertsansmedium"
-                android:text="대신 물어봐주세요"
-                android:textAllCaps="false"
-                android:textColor="@color/primary_color" />
-        </RelativeLayout>
+<!--            &lt;!&ndash;submit&ndash;&gt;-->
+<!--            <Button-->
+<!--                android:id="@+id/btnOnBehalfOf"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_toRightOf="@id/btnDirect"-->
+<!--                android:backgroundTint="@color/teal_200"-->
+<!--                android:fontFamily="@font/albertsansmedium"-->
+<!--                android:text="대신 물어봐주세요"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/primary_color" />-->
+<!--        </RelativeLayout>-->
 
 
 

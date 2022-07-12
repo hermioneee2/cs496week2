@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    app:cardBackgroundColor="@color/tertiary_color"
+    app:cardCornerRadius="15dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rlProfile0">
+
+            <!--        <ImageView-->
+            <!--            android:layout_width="70dp"-->
+            <!--            android:layout_height="70dp"-->
+            <!--            android:id="@+id/ivProfilePic"-->
+            <!--            android:src="@drawable/ic_baseline_add_circle_24" />-->
+
+            <!--profile pic-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvProfilePic0"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="35dp"
+                app:cardElevation="20dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivProfilePic0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/tvName0"
+                android:text="Name"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_below="@id/cvProfilePic0"
+                android:fontFamily="@font/albertsansmedium"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rlProfile1"
+            android:layout_centerInParent="true">
+
+            <!--        <ImageView-->
+            <!--            android:layout_width="70dp"-->
+            <!--            android:layout_height="70dp"-->
+            <!--            android:id="@+id/ivProfilePic"-->
+            <!--            android:src="@drawable/ic_baseline_add_circle_24" />-->
+
+            <!--profile pic-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvProfilePic1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="35dp"
+                app:cardElevation="20dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivProfilePic1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/tvName1"
+                android:text="Name"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_below="@id/cvProfilePic1"
+                android:fontFamily="@font/albertsansmedium"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rlProfile2"
+            android:layout_toRightOf="@id/rlProfile0"
+            android:layout_marginLeft="90dp">
+
+            <!--        <ImageView-->
+            <!--            android:layout_width="70dp"-->
+            <!--            android:layout_height="70dp"-->
+            <!--            android:id="@+id/ivProfilePic"-->
+            <!--            android:src="@drawable/ic_baseline_add_circle_24" />-->
+
+            <!--profile pic-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvProfilePic2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="35dp"
+                app:cardElevation="20dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivProfilePic2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/tvName2"
+                android:text="Name"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_below="@id/cvProfilePic2"
+                android:fontFamily="@font/albertsansmedium"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

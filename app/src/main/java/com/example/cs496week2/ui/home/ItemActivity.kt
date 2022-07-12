@@ -1,12 +1,12 @@
 package com.example.cs496week2.ui.home
 
-import android.content.ClipData
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.cs496week2.R
-import com.example.cs496week2.databinding.ActivityInitProfileBinding
 import com.example.cs496week2.databinding.ActivityItemBinding
 import kotlinx.android.synthetic.main.activity_item.*
 import kotlinx.android.synthetic.main.row_items.*
@@ -15,7 +15,10 @@ import kotlinx.android.synthetic.main.row_items.view.*
 class ItemActivity : AppCompatActivity() {
     private lateinit var binding: ActivityItemBinding
     var itemModal: ItemModal? = null
-    var tagAdapter: TagAdapter? = null;
+    var workTagAdapter: TagAdapter? = null;
+    var areaTagAdapter: TagAdapter? = null;
+    var hobbyTagAdapter: TagAdapter? = null;
+    var relationshipTagAdapter: TagAdapter? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,20 +29,51 @@ class ItemActivity : AppCompatActivity() {
         itemModal = intent.getSerializableExtra("data") as ItemModal;
 
 
-        Glide.with(this).load(itemModal!!.imageSrc).into(binding.ivProfilePic)
+        Glide.with(this).load(itemModal!!.photoSrc).into(binding.ivProfilePic)
 //        Log.d("imageSrc", itemModal!!.imageSrc)
 //        tvTest.text = itemModal!!.name
-        etName.setText(itemModal!!.name)
+        binding.tvName.text = itemModal!!.name
+        binding.tvEmail.text = itemModal!!.email
+        binding.tvPhone.text = itemModal!!.phone
 
-        var dummyTagList = arrayListOf(
-            "삼성전자", "LG전자", "네이버"
-        )
+        workTagAdapter = TagAdapter()
+        rvWorkTag.setHasFixedSize(true)
+        workTagAdapter!!.setData(itemModal!!.workTagList)
+        rvWorkTag.adapter = workTagAdapter;
 
-        binding.rvWorkTag.setHasFixedSize(true)
-        tagAdapter = TagAdapter()
-        tagAdapter!!.setData(dummyTagList)
+        areaTagAdapter = TagAdapter()
+        rvAreaTag.setHasFixedSize(true)
+        areaTagAdapter!!.setData(itemModal!!.areaTagList)
+        rvAreaTag.adapter = areaTagAdapter;
 
-        binding.rvWorkTag.adapter = tagAdapter;
+        hobbyTagAdapter = TagAdapter()
+        rvHobbyTag.setHasFixedSize(true)
+        hobbyTagAdapter!!.setData(itemModal!!.hobbyTagList)
+        rvHobbyTag.adapter = hobbyTagAdapter;
+
+        relationshipTagAdapter = TagAdapter()
+        rvRelationshipTag.setHasFixedSize(true)
+        relationshipTagAdapter!!.setData(itemModal!!.relationshipTagList)
+        rvRelationshipTag.adapter = relationshipTagAdapter;
+
+        btnEdit.visibility = View.GONE
+        btnDirect.visibility = View.VISIBLE
+        btnOnBehalfOf.visibility = View.VISIBLE
+
+        // set on-click listener for direct message
+        binding.btnDirect.setOnClickListener {
+            // send SMS directly
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + itemModal!!.phone))
+//            intent.putExtra("sms_body", "안녕하세요 " + itemModal!!.name + "님, '한다리건너'를 통해 알게 되어 연락 드립니다.")
+//            startActivity(intent)
+        }
+
+        // set on-click listener for direct message
+        binding.btnOnBehalfOf.setOnClickListener {
+            // notify the bridge person
+            //
+            Toast.makeText(this@ItemActivity, "이어주는 연결 다리에게 연락이 갔어요!", Toast.LENGTH_LONG).show()
+        }
 
 
     }

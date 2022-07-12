@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cs496week2.R
+import kotlinx.android.synthetic.main.activity_item.view.*
 import kotlinx.android.synthetic.main.row_items.view.*
+import kotlinx.android.synthetic.main.row_items.view.ivProfilePic
+import kotlinx.android.synthetic.main.row_items.view.tvName
 
 class ItemAdapter(
     var clickedItem: ClickedItem
@@ -42,10 +45,9 @@ class ItemAdapter(
         var itemModal = itemModalList[position]
 
 //        holder.imageView.setImageResource(itemModal.imageSrc)
-        Glide.with(holder.ivProfilePic).load(itemModal.imageSrc).into(holder.ivProfilePic.ivProfilePic)
+        Glide.with(holder.ivProfilePic).load(itemModal.photoSrc).into(holder.ivProfilePic.ivProfilePic)
 
         holder.name.text = itemModal.name
-//        holder.desc.text = itemModal.desc
 
         holder.rvTag.setHasFixedSize(true)
         tagAdapter = TagAdapter()
@@ -65,7 +67,6 @@ class ItemAdapter(
     class ItemAdapterVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var ivProfilePic = itemView.ivProfilePic
         var name = itemView.tvName
-//        var desc = itemView.tvDesc
         var rvTag = itemView.rvTag
     }
 
